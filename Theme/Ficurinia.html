@@ -1,0 +1,245 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo Themes - Ficurinia Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Warna & Font Khas Ficurinia */
+        :root {
+            --bg-color: #222224;        /* Latar belakang abu-abu sangat gelap */
+            --text-main: #d4d4d4;       /* Teks abu-abu terang */
+            --text-muted: #888888;      /* Teks meta abu-abu redup */
+            --accent-pink: #d96b8e;     /* Aksen pink/magenta untuk judul & link */
+            --accent-green: #5fd787;    /* Aksen hijau untuk logo */
+            --border-line: #444444;     /* Garis pemisah antar post */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            /* Monospace mutlak untuk seluruh elemen */
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container Pembungkus */
+        .container-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Link default pink */
+        .link-pink {
+            color: var(--accent-pink);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .link-pink:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Tautan di dalam excerpt dengan garis bawah putih */
+        .inline-link {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+            text-decoration: none;
+        }
+        .inline-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Tombol "Continue reading" */
+        .continue-read {
+            display: inline-block;
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+            text-decoration: none;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+        .continue-read:hover {
+            opacity: 0.8;
+        }
+
+        /* Garis Pemisah (HR) */
+        hr.divider {
+            border: 0;
+            border-top: 1px solid var(--border-line);
+            margin: 2.5rem 0;
+        }
+
+        /* Pemisah Menu Pipe (|) */
+        .menu-pipe {
+            color: var(--border-line);
+            margin: 0 0.5rem;
+        }
+
+        /* Meta Text (Tanggal & Tag) */
+        .meta-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Custom SVG Icon Alignment */
+        .meta-icon {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            margin-right: 0.2rem;
+            margin-top: -1px; /* Optical alignment */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-wrapper">
+        
+        <!-- Header Section -->
+        <header class="flex items-start mb-8">
+            <!-- Logo Shapes -->
+            <div class="relative w-8 h-8 mr-4 mt-1 flex-shrink-0">
+                <!-- Pink Shape (Kanan Atas) -->
+                <div class="absolute top-0 right-0 w-4 h-5 rounded-sm" style="background-color: var(--accent-pink); transform: rotate(10deg);"></div>
+                <!-- Green Shape (Kiri Bawah) -->
+                <div class="absolute bottom-0 left-0 w-5 h-6 rounded-full" style="background-color: var(--accent-green);"></div>
+            </div>
+
+            <!-- Title & Navigation -->
+            <div>
+                <h1 class="text-xl text-white font-bold tracking-wide mb-1">Hugo Themes</h1>
+                <nav class="text-sm">
+                    <a href="#" class="link-pink">Home</a>
+                    <span class="menu-pipe">|</span>
+                    <a href="#" class="link-pink">Posts</a>
+                    <span class="menu-pipe">|</span>
+                    <a href="#" class="link-pink">Tags</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- RSS Icon -->
+        <div class="mb-10 text-[#888888]">
+            <a href="#" class="hover:text-white transition-colors" title="RSS Feed">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M4.062 16.924c-1.396 0-2.531 1.135-2.531 2.531S2.666 22 4.062 22s2.531-1.135 2.531-2.531-1.135-2.545-2.531-2.545zm-.018-7.391c-4.043 0-4.043 2.197-4.043 2.197 3.327 0 6.016 2.689 6.016 6.016 0 0 2.197 0 2.197-4.043 0-4.507-3.663-8.17-8.17-8.17zm0-5.836C-1.849 3.697-1.849 6-1.849 6c6.486 0 11.758 5.272 11.758 11.758 0 0 2.303 0 2.303-5.892 0-7.531-6.111-13.642-13.642-13.642z"/></svg>
+            </a>
+        </div>
+
+        <!-- Main Content (Posts) -->
+        <main>
+            
+            <!-- Post 1 -->
+            <article>
+                <h2 class="text-[1.1rem] font-bold mb-2">
+                    <a href="#" class="link-pink">Markdown Syntax Guide</a>
+                </h2>
+                
+                <div class="meta-text">
+                    <!-- Calendar Icon -->
+                    <span class="flex items-center">
+                        <svg class="meta-icon" viewBox="0 0 24 24"><path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"></path></svg>
+                        2019-03-11
+                    </span>
+                    <span class="menu-pipe mx-1">|</span>
+                    <!-- Tag Icon -->
+                    <span class="flex items-center gap-1">
+                        <svg class="meta-icon" viewBox="0 0 24 24"><path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 2.813A1.002 1.002 0 0 0 5.216 2H2v2h2.518l1.71 6.136L4 16.5A1 1 0 0 0 4.887 18H20v-2H6.945l1.378-4h11.233a1.002 1.002 0 0 0 .963-.728l1.5-5a1.003 1.003 0 0 0-.197-.841z"></path></svg>
+                        <a href="#" class="hover:text-white transition-colors">#markdown</a>
+                        <a href="#" class="hover:text-white transition-colors">#css</a>
+                        <a href="#" class="hover:text-white transition-colors">#html</a>
+                    </span>
+                </div>
+
+                <p class="text-[0.95rem] mb-2 leading-relaxed">
+                    This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+                </p>
+                
+                <a href="#" class="continue-read">Continue reading &rarr;</a>
+            </article>
+
+            <hr class="divider">
+
+            <!-- Post 2 -->
+            <article>
+                <h2 class="text-[1.1rem] font-bold mb-2">
+                    <a href="#" class="link-pink">Rich Content</a>
+                </h2>
+                
+                <div class="meta-text">
+                    <span class="flex items-center">
+                        <svg class="meta-icon" viewBox="0 0 24 24"><path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"></path></svg>
+                        2019-03-10
+                    </span>
+                    <span class="menu-pipe mx-1">|</span>
+                    <span class="flex items-center gap-1">
+                        <svg class="meta-icon" viewBox="0 0 24 24"><path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 2.813A1.002 1.002 0 0 0 5.216 2H2v2h2.518l1.71 6.136L4 16.5A1 1 0 0 0 4.887 18H20v-2H6.945l1.378-4h11.233a1.002 1.002 0 0 0 .963-.728l1.5-5a1.003 1.003 0 0 0-.197-.841z"></path></svg>
+                        <a href="#" class="hover:text-white transition-colors">#shortcodes</a>
+                        <a href="#" class="hover:text-white transition-colors">#privacy</a>
+                    </span>
+                </div>
+
+                <p class="text-[0.95rem] mb-2 leading-relaxed">
+                    Hugo ships with several <a href="#" class="inline-link">Built-in Shortcodes</a> for rich content, along with a <a href="#" class="inline-link">Privacy Config</a> and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
+                </p>
+                
+                <a href="#" class="continue-read">Continue reading &rarr;</a>
+            </article>
+
+            <hr class="divider">
+
+            <!-- Post 3 -->
+            <article>
+                <h2 class="text-[1.1rem] font-bold mb-2">
+                    <a href="#" class="link-pink">Placeholder Text</a>
+                </h2>
+                
+                <div class="meta-text">
+                    <span class="flex items-center">
+                        <svg class="meta-icon" viewBox="0 0 24 24"><path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"></path></svg>
+                        2019-03-09
+                    </span>
+                    <span class="menu-pipe mx-1">|</span>
+                    <span class="flex items-center gap-1">
+                        <svg class="meta-icon" viewBox="0 0 24 24"><path d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 2.813A1.002 1.002 0 0 0 5.216 2H2v2h2.518l1.71 6.136L4 16.5A1 1 0 0 0 4.887 18H20v-2H6.945l1.378-4h11.233a1.002 1.002 0 0 0 .963-.728l1.5-5a1.003 1.003 0 0 0-.197-.841z"></path></svg>
+                        <a href="#" class="hover:text-white transition-colors">#markdown</a>
+                        <a href="#" class="hover:text-white transition-colors">#text</a>
+                    </span>
+                </div>
+
+                <p class="text-[0.95rem] mb-2 leading-relaxed">
+                    Lorem est tota propriore conpellat pectoribus de pectora summo.
+                </p>
+                
+                <a href="#" class="continue-read">Continue reading &rarr;</a>
+            </article>
+
+            <hr class="divider">
+
+        </main>
+
+        <!-- Pagination (Bottom Right) -->
+        <div class="flex justify-end text-sm mt-8">
+            <div class="flex items-center gap-2">
+                <span class="text-white">[1]</span>
+                <a href="#" class="link-pink">2</a>
+                <a href="#" class="link-pink">&gt;&gt;</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+```
