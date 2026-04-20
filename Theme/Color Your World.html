@@ -1,0 +1,387 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Color Your World</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Variables (CSS Custom Properties) */
+        :root {
+            /* Warna Dasar */
+            --bg: #ffffff;
+            --text: #333333;
+            --border-color: #333333;
+            --bg-secondary: #f4f4f4;
+            --text-muted: #666666;
+            
+            /* Warna Aksen Bawaan (Default: Merah / Tomato) */
+            --accent: #ff6347;
+            
+            /* Konfigurasi Ukuran & Spacing */
+            --font-family: 'Fira Sans', sans-serif;
+            --border-width: 4px;
+            --container-width: 800px;
+            --spacing: 1.5rem;
+            --transition-speed: 0.3s;
+        }
+
+        /* Variables for Dark Mode */
+        .dark-mode {
+            --bg: #222222;
+            --text: #eeeeee;
+            --border-color: #eeeeee;
+            --bg-secondary: #333333;
+            --text-muted: #aaaaaa;
+        }
+
+        /* Reset & Global */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 18px;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 2px;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration-style: dashed;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        /* Header & Navigation */
+        header {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .site-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .site-title a {
+            color: var(--text);
+            text-decoration: none;
+            /* Garis bawah dari warna aksen saat di hover */
+            border-bottom: var(--border-width) solid transparent;
+            transition: border-color var(--transition-speed);
+        }
+
+        .site-title a:hover {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom-color: var(--accent);
+            opacity: 1;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.75rem 0;
+            font-weight: 700;
+        }
+
+        .nav-menu li a {
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        /* Konten Utama */
+        main {
+            flex-grow: 1;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Aksen kotak kecil di judul */
+        .page-title::before {
+            content: '';
+            position: absolute;
+            left: -1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.6rem;
+            height: 0.6rem;
+            background-color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Double border blockquote styling khas tema ini */
+        blockquote {
+            border-left: var(--border-width) solid var(--accent);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Notifikasi terjemahan (Language box) */
+        .lang-notice {
+            display: inline-block;
+            border: 2px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            padding: 2rem 0;
+            border-top: 4px double var(--border-color); /* Double border khas */
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Color Picker & Theme Toggle Controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Kotak pemilih warna */
+        .color-picker {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 35px;
+            height: 35px;
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .color-picker::-webkit-color-swatch-wrapper {
+            padding: 2px;
+        }
+        
+        .color-picker::-webkit-color-swatch {
+            border: none;
+            border-radius: 2px;
+        }
+        
+        .color-picker::-moz-color-swatch {
+            border: none;
+            border-radius: 2px;
+        }
+
+        /* Tombol Toggle Tema (Bulan/Matahari) */
+        .theme-toggle-btn {
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            transition: all var(--transition-speed);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .theme-toggle-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Tampilkan/Sembunyikan icon sesuai mode */
+        .icon-moon { display: block; }
+        .icon-sun { display: none; }
+        
+        .dark-mode .icon-moon { display: none; }
+        .dark-mode .icon-sun { display: block; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="container">
+        <h1 class="site-title">
+            <a href="#">Color Your World</a>
+        </h1>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Posts</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h2 class="page-title">Welcome</h2>
+        
+        <p>Feel free to check the <a href="#">posts</a> to see some of the theme features.</p>
+        
+        <p>You can also pick a different color by using the colored square in the footer.</p>
+        
+        <div class="lang-notice">
+            Also available in: <a href="#">Português</a>.
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-content">
+            
+            <!-- Controls: Theme Toggle & Color Picker -->
+            <div class="controls">
+                
+                <!-- Color Picker -->
+                <input type="color" id="accent-color-picker" class="color-picker" value="#ff6347" title="Change accent color">
+                
+                <!-- Dark/Light Mode Toggle -->
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle dark/light mode">
+                    <!-- Moon Icon (For Light Mode to Dark) -->
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+                    </svg>
+                    <!-- Sun Icon (For Dark Mode to Light) -->
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="footer-text">
+                Generated with <a href="https://gohugo.io/">Hugo</a> using the <a href="https://github.com/1-11/hugo-theme-color-your-world">Color Your World</a> theme.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colorPicker = document.getElementById('accent-color-picker');
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const rootStyle = document.documentElement.style;
+            
+            // --- 1. Accent Color Logic ---
+            
+            // Cek jika ada warna yang tersimpan di localStorage
+            const savedColor = localStorage.getItem('cyw-accent-color');
+            if (savedColor) {
+                rootStyle.setProperty('--accent', savedColor);
+                colorPicker.value = savedColor;
+            }
+
+            // Update warna saat user memilih dari picker
+            colorPicker.addEventListener('input', (e) => {
+                const newColor = e.target.value;
+                rootStyle.setProperty('--accent', newColor);
+                localStorage.setItem('cyw-accent-color', newColor);
+            });
+
+
+            // --- 2. Dark/Light Mode Logic ---
+            
+            // Cek preferensi user di localStorage atau System OS
+            const savedTheme = localStorage.getItem('cyw-theme');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Tombol Toggle Tema
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                
+                // Simpan preferensi ke localStorage
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('cyw-theme', 'dark');
+                } else {
+                    localStorage.setItem('cyw-theme', 'light');
+                }
+            });
+            
+            // Listen ke perubahan OS (jika user mengubah mode dari sistem HP/PC)
+            prefersDarkScheme.addEventListener('change', (e) => {
+                if (!localStorage.getItem('cyw-theme')) {
+                    if (e.matches) {
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
+
+```
