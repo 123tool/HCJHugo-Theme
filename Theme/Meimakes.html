@@ -1,0 +1,321 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Web Central - Vintage Web Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* =========================================
+           Warna dan Gaya Klasik ala Windows 95/98
+           ========================================= */
+        :root {
+            --win-bg: #c0c0c0;
+            --win-border-light: #ffffff;
+            --win-border-dark: #808080;
+            --win-border-darker: #000000;
+            --win-title-start: #000080;
+            --win-title-end: #1084d0;
+        }
+
+        body {
+            /* Warna latar belakang pink/mauve pudar khas tema ini */
+            background-color: #ebd9e0;
+            /* Font default untuk UI sistem */
+            font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+            color: black;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+
+        /* Border Timbul (Outset) untuk Jendela & Tombol */
+        .win-outset {
+            background-color: var(--win-bg);
+            border-top: 2px solid var(--win-border-light);
+            border-left: 2px solid var(--win-border-light);
+            border-right: 2px solid var(--win-border-dark);
+            border-bottom: 2px solid var(--win-border-dark);
+        }
+
+        /* Border Tenggelam (Inset) untuk Konten & Input */
+        .win-inset {
+            background-color: #ffffff;
+            border-top: 2px solid var(--win-border-dark);
+            border-left: 2px solid var(--win-border-dark);
+            border-right: 2px solid var(--win-border-light);
+            border-bottom: 2px solid var(--win-border-light);
+        }
+
+        /* Baris Judul Jendela (Title Bar) */
+        .win-titlebar {
+            background: linear-gradient(90deg, var(--win-title-start), var(--win-title-end));
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 3px 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tombol Sistem Khas (Back, Tab, dll) */
+        .win-btn {
+            background-color: var(--win-bg);
+            border-top: 1px solid var(--win-border-light);
+            border-left: 1px solid var(--win-border-light);
+            border-right: 1px solid var(--win-border-darker);
+            border-bottom: 1px solid var(--win-border-darker);
+            box-shadow: inset -1px -1px var(--win-border-dark), inset 1px 1px #dfdfdf;
+            padding: 2px 10px;
+            font-size: 11px;
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .win-btn:active, .win-btn.active {
+            border-top: 1px solid var(--win-border-darker);
+            border-left: 1px solid var(--win-border-darker);
+            border-right: 1px solid var(--win-border-light);
+            border-bottom: 1px solid var(--win-border-light);
+            box-shadow: inset 1px 1px var(--win-border-dark);
+            padding: 3px 9px 1px 11px; /* Efek teks tergeser saat ditekan */
+        }
+
+        /* Tombol Kontrol Jendela (Minimize, Maximize, Close) */
+        .win-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .win-controls button {
+            width: 16px;
+            height: 14px;
+            font-size: 9px;
+            line-height: 1;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background-color: var(--win-bg);
+            border-top: 1px solid var(--win-border-light);
+            border-left: 1px solid var(--win-border-light);
+            border-right: 1px solid var(--win-border-darker);
+            border-bottom: 1px solid var(--win-border-darker);
+            box-shadow: inset -1px -1px var(--win-border-dark);
+            color: black;
+        }
+
+        /* Area Konten Utama (Web 1.0 Style) */
+        .web-content {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15px;
+            line-height: 1.4;
+            padding: 1rem;
+            color: black;
+            /* Scrollbar kustom retro */
+            scrollbar-width: auto;
+            scrollbar-color: var(--win-bg) var(--win-border-dark);
+        }
+
+        .web-content h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .web-content h2 {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .web-content p {
+            margin-bottom: 1rem;
+        }
+
+        .web-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .web-content li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Tautan Biru Klasik */
+        .web-content a {
+            color: #0000ee;
+            text-decoration: underline;
+        }
+        .web-content a:visited {
+            color: #551a8b;
+        }
+
+        /* Banner Spesial */
+        .banner-text {
+            font-family: "Times New Roman", Times, serif;
+            color: #330066; /* Warna ungu gelap/biru tua */
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: normal;
+        }
+
+        /* Garis Klasik 3D */
+        .retro-hr {
+            border: 0;
+            border-top: 1px solid var(--win-border-dark);
+            border-bottom: 1px solid var(--win-border-light);
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container Utama (Mewakili Seluruh Jendela Browser) -->
+    <div class="max-w-[1000px] mx-auto flex flex-col gap-3">
+        
+        <!-- FAKE BROWSER CHROME -->
+        <div>
+            <!-- Toolbar Atas -->
+            <div class="flex gap-1 mb-1">
+                <button class="win-btn">Back</button>
+                <button class="win-btn">Forward</button>
+                <button class="win-btn">Refresh</button>
+                <button class="win-btn">Home</button>
+            </div>
+            <!-- Address Bar -->
+            <div class="win-inset bg-white px-2 py-0.5 text-[11px] font-sans flex items-center">
+                http://localhost:1313/
+            </div>
+        </div>
+
+        <!-- MENU TABS -->
+        <div class="flex flex-wrap gap-1 mt-2">
+            <a href="#" class="win-btn active">Home</a>
+            <a href="#" class="win-btn">Posts</a>
+            <a href="#" class="win-btn">About</a>
+            <a href="#" class="win-btn">Guestbook</a>
+            <a href="#" class="win-btn">📁 Categories</a>
+            <a href="#" class="win-btn">🏷️ Tags</a>
+            <a href="#" class="win-btn">RSS</a>
+        </div>
+
+        <!-- BANNER BOX -->
+        <div class="win-outset p-[3px]">
+            <!-- Title Bar -->
+            <div class="win-titlebar mb-0.5">
+                <span>Retro Web Central - Y2K Compliant Since 1999</span>
+                <div class="win-controls">
+                    <button>_</button>
+                    <button>◻</button>
+                    <button>X</button>
+                </div>
+            </div>
+            <!-- Banner Content -->
+            <div class="win-inset banner-text">
+                Retro Web Central - Y2K Compliant Since 1999
+            </div>
+        </div>
+
+        <!-- MAIN WINDOW BOX -->
+        <div class="win-outset p-[3px]">
+            <!-- Title Bar -->
+            <div class="win-titlebar mb-0.5">
+                <span>Welcome to Retro Web Central - Y2K Compliant Since 1999</span>
+                <div class="win-controls">
+                    <button>_</button>
+                    <button>◻</button>
+                    <button>X</button>
+                </div>
+            </div>
+            
+            <!-- White Content Area -->
+            <div class="win-inset web-content">
+                
+                <h1>🌐 Welcome to Retro Web Central! 🌐</h1>
+                <p>You are visitor: <strong>1999,999!</strong></p>
+
+                <h2>🎉 What's Hot on the Web! 🎉</h2>
+                <p>Greetings, fellow netizen! You've stumbled upon the most tubular corner of the information superhighway. This site is your one-stop destination for all things retro web, Y2K nostalgia, and vintage tech. WAZZUP!</p>
+
+                <h2>🔥 Latest Updates 🔥</h2>
+                <ul>
+                    <li><strong>NEW!</strong> Our guestbook is now live! <a href="#">Sign it here!</a></li>
+                    <li><strong>COOL!</strong> Check out our <a href="#">HTML Tutorials</a>.</li>
+                    <li><strong>RAD!</strong> <a href="#">Geocities vs. Angelfire showdown</a>.</li>
+                    <li><strong>AWESOME!</strong> <a href="#">Best animated GIFs of the decade</a>.</li>
+                </ul>
+
+                <h2>💻 What's New in Tech?</h2>
+                <p>The new millennium is approaching and technology is advancing at warp speed! We've got the latest scoop on:</p>
+                <ul>
+                    <li><strong>Internet Explorer 5.0</strong> - The future of browsing is here!</li>
+                    <li><strong>Windows 98 Second Edition</strong> - More stable than ever.</li>
+                    <li><strong>56k Modems</strong> - Blazing fast internet connections.</li>
+                    <li><strong>MP3 Players</strong> - Music on the go!</li>
+                </ul>
+
+                <div class="flex justify-between items-end mt-6 mb-2">
+                    <h2 class="!mt-0 !mb-0">🎮 Featured Sections</h2>
+                    <span class="text-[13px] font-bold">▲ Don't forget to scroll!</span>
+                </div>
+                <ul>
+                    <li><a href="#">Tech Reviews</a> - The latest gadgets and software.</li>
+                    <li><a href="#">Web Design Tips</a> - Make your site shine!</li>
+                    <li><a href="#">Y2K Preparedness</a> - Will your computer survive?</li>
+                    <li><a href="#">Gaming Corner</a> - From Quake to StarCraft.</li>
+                </ul>
+
+                <h2>💾 System Requirements</h2>
+                <p>This site is optimized for:</p>
+                <ul>
+                    <li><strong>Browser:</strong> Netscape Navigator 4.0+ or Internet Explorer 4.0+</li>
+                    <li><strong>Resolution:</strong> 800x600 (Higher resolution is supported!)</li>
+                    <li><strong>Colors:</strong> 256 colors minimum, True Color recommended.</li>
+                    <li><strong>RAM:</strong> 32MB minimum, 64MB recommended.</li>
+                    <li><strong>Connection:</strong> 28.8k modem or faster.</li>
+                </ul>
+
+                <h2>🔗 Cool Links</h2>
+                <ul>
+                    <li><a href="#">Yahoo! Directory</a> - The best web directory.</li>
+                    <li><a href="#">AltaVista Search</a> - Find anything on the web.</li>
+                    <li><a href="#">Hotmail</a> - Free email for everyone!</li>
+                    <li><a href="#">ICQ</a> - Chat with friends online.</li>
+                </ul>
+
+                <hr class="retro-hr">
+
+                <p class="text-center font-bold">This site is under construction! 🚧 Check back often for updates!</p>
+                
+                <div class="flex justify-center gap-2 my-4">
+                    <span class="win-btn cursor-default pointer-events-none">Made with HTML</span>
+                    <span class="win-btn cursor-default pointer-events-none">Best viewed in Netscape</span>
+                    <span class="win-btn cursor-default pointer-events-none">Y2K Ready</span>
+                </div>
+
+                <div class="flex justify-between items-end mt-8">
+                    <p class="text-[12px] italic !mb-0">Last updated: December 31, 1999 at 11:59 PM</p>
+                    <p class="text-[12px] font-sans font-bold !mb-0">Powered by 123Tool</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+```
