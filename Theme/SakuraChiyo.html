@@ -1,0 +1,184 @@
+```html
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Site in Theme SakuraChiyo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Warna Asli SakuraChiyo (Dark Theme) */
+        :root {
+            /* Background: Hitam kecoklatan / Dark greyish brown */
+            --bg-color: #2b2b2b; 
+            
+            /* Warna pink sakura untuk link */
+            --sakura-pink: #d988a1; 
+            --sakura-hover: #e8a2b8;
+            
+            /* Warna teks */
+            --text-main: #d3d3d3; /* Abu-abu terang */
+            --text-muted: #888888;
+            
+            /* Warna garis bawah pada tahun */
+            --border-color: #444444;
+        }
+
+        /* Override penting untuk body */
+        body {
+            background-color: var(--bg-color) !important;
+            color: var(--text-main);
+            /* Font aslinya menggunakan sans-serif biasa */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Styling untuk semua Tautan (Link) */
+        a {
+            color: var(--sakura-pink);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--sakura-hover);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+        }
+
+        /* List Artikel */
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .post-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.85rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        /* Titik (bullet) custom di depan list */
+        .post-item::before {
+            content: "*";
+            position: absolute;
+            left: 0;
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .post-date {
+            min-width: 3.5rem;
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .post-link {
+            font-size: 1rem;
+        }
+        
+        /* Heading Tahun */
+        .year-heading {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Styling spesifik untuk Header */
+        h1 {
+            color: #eeeeee;
+        }
+        
+        h2 {
+            color: #eeeeee;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#d988a1] selection:text-white" id="top">
+
+    <!-- Container Utama -->
+    <div class="max-w-[700px] mx-auto px-6 py-12 md:py-16 flex flex-col min-h-screen">
+        
+        <!-- Bagian Header (Tengah) -->
+        <header class="text-center mb-16">
+            <a href="#" class="inline-block mb-4">
+                <!-- Avatar Image - menggunakan placeholder gambar agar terlihat bentuknya -->
+                <img src="https://placehold.co/150x150/444444/d988a1?text=avatar" alt="avatar" class="w-[100px] h-[100px] rounded-full mx-auto object-cover hover:opacity-80 transition-opacity duration-300">
+            </a>
+            
+            <h1 class="text-[1.75rem] font-bold mb-6 tracking-wide">
+                Demo Site in Theme SakuraChiyo
+            </h1>
+            
+            <!-- Menu Navigasi -->
+            <nav>
+                <ul class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[1rem]">
+                    <li>* <a href="#">Home</a></li>
+                    <li>* <a href="#">Page1</a></li>
+                    <li>* <a href="#">Page2</a></li>
+                    <li>* <a href="#">Tags</a></li>
+                    <li>* <a href="#">简中</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Bagian Konten Utama -->
+        <main class="flex-grow">
+            
+            <!-- Teks Pembuka (Preface) -->
+            <div class="max-w-none mb-12 text-[1rem] leading-loose">
+                <p>This is the home page of the example website. You can type something here, like the preface.</p>
+            </div>
+
+            <!-- Arsip Artikel -->
+            <div class="archive space-y-10">
+                
+                <!-- Tahun 2025 -->
+                <section>
+                    <h2 class="text-[1.5rem] font-bold mb-4 pb-2 year-heading">2025</h2>
+                    <ul class="post-list">
+                        <li class="post-item">
+                            <span class="post-date">04-03</span>
+                            <a href="#" class="post-link">How to Install Theme SakuraChiyo</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Tahun 2019 -->
+                <section>
+                    <h2 class="text-[1.5rem] font-bold mb-4 pb-2 year-heading">2019</h2>
+                    <ul class="post-list">
+                        <li class="post-item">
+                            <span class="post-date">01-01</span>
+                            <a href="#" class="post-link">Example Draft</a>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Bagian Footer -->
+        <footer class="mt-20 pt-8 pb-4">
+            <div class="mb-8">
+                <!-- Kembali ke atas -->
+                <a href="#top" class="text-[1rem] hover:underline">[Back to top](#)</a>
+            </div>
+            <div class="text-[1rem] text-[#d3d3d3] flex flex-col gap-1">
+                <p>©</p>
+                <p>Sakura Chiyo</p>
+                <p>2025</p>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+
+```
