@@ -1,0 +1,298 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomad-Tech | Hi, I'm m03315</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Font & Warna Dasar */
+        body {
+            /* Warna latar utama sangat gelap dengan sedikit rona biru navy/ungu */
+            background-color: #0f111a; 
+            
+            /* Menambahkan gambar bintang-bintang tipis sebagai overlay */
+            background-image: 
+                radial-gradient(circle at center, transparent 0%, #0f111a 80%),
+                url('https://images.unsplash.com/photo-1534796636918-a1d8f0528c52?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: color-dodge; /* Blend agar bintangnya tipis */
+            
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            position: relative;
+        }
+
+        /* Overlay tambahan untuk menggelapkan background jika gambar terlalu terang */
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 17, 26, 0.85); /* Warna dasar dengan transparansi */
+            z-index: 0;
+        }
+
+        /* Pembungkus agar konten berada di atas overlay */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Navigation */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            width: 100%;
+        }
+
+        /* Logo Gradient Text */
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* Gradient Biru Muda ke Ungu Gelap */
+            background: linear-gradient(to right, #60a5fa, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        /* Menu Navigation */
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #d1d5db; /* Gray-300 */
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #6b7280; /* Gray-500 */
+        }
+
+        .lang-switch a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        .lang-switch a.active {
+            color: #60a5fa; /* Biru terang untuk yang aktif */
+            font-weight: 600;
+        }
+        
+        .lang-switch a:hover {
+            color: #ffffff;
+        }
+
+        /* Main Content Section (Tengah Layar) */
+        .hero-section {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: -5vh; /* Sedikit ditarik ke atas agar tidak terlalu jatuh */
+        }
+
+        /* Judul Besar dengan Gradien (Biru Muda -> Pink/Ungu Muda) */
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            
+            /* Gradient persis seperti di gambar */
+            background: linear-gradient(to right, #60a5fa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-desc {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        /* Button Container */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Tombol 1: Background Gradient Solid */
+        .btn-primary {
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Tombol 2: Gradient Border (Hollow/Transparent background) */
+        .btn-secondary {
+            position: relative;
+            background: transparent;
+            color: #9ca3af;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            z-index: 1;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            color: #ffffff;
+            transform: scale(1.02);
+        }
+
+        /* Trik membuat border gradient pada tombol transparent */
+        .btn-secondary::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 9999px;
+            padding: 1px; /* Ketebalan border */
+            background: linear-gradient(to right, #60a5fa, #a78bfa); /* Gradient border */
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar gelap overlay menutupi background gambar -->
+    <div class="bg-overlay"></div>
+
+    <div class="content-wrapper">
+        
+        <!-- Header & Navigasi -->
+        <header class="header-bar">
+            <!-- Logo Kiri -->
+            <a href="#" class="logo-text">NOMAD-TECH</a>
+
+            <!-- Menu Tengah -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Social Media</a>
+                <a href="#" class="nav-link">Blog</a>
+                <a href="#" class="nav-link">Portfolio</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Travel</a>
+            </nav>
+
+            <!-- Language Switcher Kanan -->
+            <div class="lang-switch">
+                <a href="#">ZH</a>
+                <a href="#" class="active">EN</a>
+                <a href="#">TR</a>
+            </div>
+        </header>
+
+        <!-- Area Konten Tengah (Hero Section) -->
+        <main class="hero-section">
+            <h1 class="hero-title">Hi, I'm m03315</h1>
+            
+            <p class="hero-subtitle">Digital Nomad &middot; Tech Explorer &middot; Life Recorder</p>
+            
+            <p class="hero-desc">Sharing tech insights, recording nomad life, providing practical guides</p>
+            
+            <!-- Tombol Aksi -->
+            <div class="btn-group">
+                <a href="#" class="btn-primary">Follow My Social Media</a>
+                <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            Powered by 123Tool
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+```
