@@ -1,0 +1,388 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noJS - Minimal Hugo Theme</title>
+    <style>
+        /* CSS Variabel untuk Sistem Warna Terang & Gelap secara otomatis via CSS */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #222222;
+            --link-color: #0000ee;
+            --link-hover-color: #551a8b;
+            --meta-color: #666666;
+            --border-color: #e5e5e5;
+            --code-bg: #f5f5f5;
+            --quote-border: #cccccc;
+        }
+
+        /* Otomatis deteksi mode gelap dari Sistem Operasi / Browser */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --link-color: #66b2ff;
+                --link-hover-color: #99ccff;
+                --meta-color: #999999;
+                --border-color: #333333;
+                --code-bg: #2d2d2d;
+                --quote-border: #555555;
+            }
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            /* Transisi halus saat OS ganti tema */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Tipografi Dasar */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.25rem; }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+        }
+
+        /* Header & Navigasi */
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0 0.5rem 0;
+            line-height: 1;
+        }
+
+        .site-title a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* List Postingan (Home/Archive) */
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .post-item {
+            margin-bottom: 2rem;
+        }
+
+        .post-title {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.25rem;
+        }
+
+        .post-title a {
+            text-decoration: none;
+        }
+
+        .post-title a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta {
+            font-size: 0.875rem;
+            color: var(--meta-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Konten Artikel */
+        .content {
+            margin-bottom: 4rem;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 2rem auto;
+            border-radius: 4px;
+        }
+
+        .content code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        .content pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .content pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.9em;
+        }
+
+        .content blockquote {
+            margin: 0 0 1.5rem 0;
+            padding: 0.5rem 1rem;
+            border-left: 4px solid var(--quote-border);
+            color: var(--meta-color);
+            font-style: italic;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+        }
+
+        .tags li a {
+            font-size: 0.85rem;
+            color: var(--meta-color);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            padding: 0.1rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .tags li a:hover {
+            background-color: var(--border-color);
+            color: var(--text-color);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--meta-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <h1 class="site-title"><a href="#">My Blog</a></h1>
+        <p class="site-description">A minimal, no-JavaScript blog.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Posts</a></li>
+                <li><a href="#">Tags</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Halaman Utama (Daftar Artikel) -->
+        <section>
+            <ul class="post-list">
+                
+                <li class="post-item">
+                    <h2 class="post-title">
+                        <a href="#article-1">Pengenalan Hugo Theme noJS</a>
+                    </h2>
+                    <div class="post-meta">
+                        <time datetime="2026-04-20">April 20, 2026</time> &bull; 2 min read
+                    </div>
+                    <p class="post-summary">
+                        Ini adalah contoh ringkasan artikel. Tema noJS sangat berfokus pada kecepatan dan kesederhanaan. Tanpa Tailwind, tanpa JS, murni tag HTML semantik dan CSS variabel.
+                    </p>
+                    <ul class="tags">
+                        <li><a href="#">hugo</a></li>
+                        <li><a href="#">theme</a></li>
+                        <li><a href="#">minimal</a></li>
+                    </ul>
+                </li>
+
+                <li class="post-item">
+                    <h2 class="post-title">
+                        <a href="#article-2">Contoh Syntax Highlighting</a>
+                    </h2>
+                    <div class="post-meta">
+                        <time datetime="2026-04-18">April 18, 2026</time> &bull; 3 min read
+                    </div>
+                    <p class="post-summary">
+                        Menampilkan bagaimana blok kode dirender dalam tema ini menggunakan warna latar belakang yang menyesuaikan dengan mode terang atau gelap.
+                    </p>
+                    <ul class="tags">
+                        <li><a href="#">code</a></li>
+                        <li><a href="#">markdown</a></li>
+                    </ul>
+                </li>
+
+                <li class="post-item">
+                    <h2 class="post-title">
+                        <a href="#article-3">Dukungan LaTeX (Matematika)</a>
+                    </h2>
+                    <div class="post-meta">
+                        <time datetime="2026-04-15">April 15, 2026</time> &bull; 1 min read
+                    </div>
+                    <p class="post-summary">
+                        Menjelaskan bagaimana tema ini mendukung perenderan rumus matematika di sisi server (via transform.ToMath) sehingga tidak butuh MathJax atau KaTeX dari sisi client.
+                    </p>
+                    <ul class="tags">
+                        <li><a href="#">math</a></li>
+                        <li><a href="#">latex</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <!-- Paginasi -->
+            <nav class="pagination">
+                <span class="page-item disabled">
+                    &larr; Prev
+                </span>
+                <span class="page-item">
+                    Page 1 of 3
+                </span>
+                <a class="page-item next" href="#">
+                    Next &rarr;
+                </a>
+            </nav>
+        </section>
+
+        <!-- 
+            ========================================================================
+            CONTOH TAMPILAN SINGLE POST (Silakan hapus atau pisahkan ke file lain) 
+            ========================================================================
+        -->
+        <hr style="margin: 5rem 0; border: 0; border-top: 4px dashed var(--border-color);">
+
+        <article class="content" id="article-1">
+            <header>
+                <h1 class="post-title">Pengenalan Hugo Theme noJS</h1>
+                <div class="post-meta" style="margin-bottom: 2rem;">
+                    <time datetime="2026-04-20">April 20, 2026</time> &bull; 2 min read
+                </div>
+            </header>
+
+            <p>Ini adalah tampilan halaman artikel tunggal. Sangat bersih untuk membaca panjang. Berikut adalah contoh bagaimana elemen-elemen <em>Markdown</em> dasar dirender.</p>
+
+            <h2>Heading Level 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+            <h3>Contoh Blok Kutipan (Blockquote)</h3>
+            <blockquote>
+                "Kesederhanaan adalah puncak dari kecanggihan."<br>
+                — Leonardo da Vinci
+            </blockquote>
+
+            <h3>Contoh Kode (Code Block)</h3>
+            <p>Berikut adalah blok kode sederhana:</p>
+            <pre><code>function sapa(nama) {
+    console.log("Halo, " + nama + "!");
+}
+sapa("Bos Bro");</code></pre>
+
+            <h3>Daftar (Lists)</h3>
+            <ul>
+                <li>Satu item daftar</li>
+                <li>Item kedua
+                    <ul>
+                        <li>Sub-item A</li>
+                        <li>Sub-item B</li>
+                    </ul>
+                </li>
+                <li>Item ketiga dengan <a href="#">sebuah tautan</a>.</li>
+            </ul>
+
+            <footer style="margin-top: 3rem;">
+                <ul class="tags">
+                    <li><a href="#">hugo</a></li>
+                    <li><a href="#">theme</a></li>
+                    <li><a href="#">minimal</a></li>
+                </ul>
+            </footer>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 My Blog. Powered by <a href="https://link.com/">123Tool</a> &amp; <a href="https://gitlab.com/">noJS theme</a>.</p>
+    </footer>
+
+</body>
+</html>
+
+```
