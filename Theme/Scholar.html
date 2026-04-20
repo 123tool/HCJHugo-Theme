@@ -1,0 +1,280 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiming's Portfolio - Publications</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Dark Mode Murni */
+        :root {
+            --bg-dark: #0a0a0a;         /* Hitam pekat untuk latar utama */
+            --bg-panel: #141414;        /* Hitam sedikit terang untuk widget/input */
+            --border-dark: #2a2a2a;     /* Warna garis pemisah */
+            --text-main: #e5e5e5;       /* Teks putih abu-abu (tidak menyilaukan) */
+            --text-muted: #888888;      /* Teks abu-abu redup untuk tanggal/meta */
+            --text-heading: #ffffff;    /* Putih murni untuk judul utama */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hover effect untuk link dan tag */
+        .hover-transition {
+            transition: all 0.2s ease;
+        }
+        .hover-transition:hover {
+            opacity: 0.7;
+        }
+
+        /* Styling kustom untuk tag berwarna di Dark Mode agar tetap cantik */
+        .tag-red { border-color: rgba(244, 63, 94, 0.4); color: #fb7185; }
+        .tag-yellow { border-color: rgba(2fb, 191, 36, 0.4); color: #fbbf24; }
+        .tag-green { border-color: rgba(52, 211, 153, 0.4); color: #34d399; }
+        .tag-blue { border-color: rgba(96, 165, 250, 0.4); color: #60a5fa; }
+        
+        /* Tag abu-abu standar (Keywords di kanan) */
+        .tag-gray {
+            background-color: var(--bg-panel);
+            border-color: var(--border-dark);
+            color: var(--text-muted);
+        }
+        .tag-gray:hover {
+            background-color: #222;
+            color: var(--text-main);
+        }
+
+        /* Ikon SVG warna seragam */
+        .svg-icon {
+            fill: currentColor;
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Scrollbar kustom gelap */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body>
+
+    <!-- Container Utama: Layout Grid 12 Kolom -->
+    <div class="max-w-[1200px] mx-auto px-4 py-8 lg:py-12 w-full flex-grow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+            <!-- ==========================================
+                 KOLOM KIRI: PROFILE (span 3)
+            ========================================== -->
+            <aside class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <!-- Profile Image -->
+                <img src="https://placehold.co/400x400/1a1a1a/ffffff?text=Portrait" alt="Profile Picture" class="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover mb-4 border-2 border-gray-800">
+                
+                <h1 class="text-2xl font-bold text-white mb-2">Yiming's Portfolio</h1>
+                
+                <!-- Bio / Affiliation -->
+                <div class="text-[0.9rem] text-gray-400 flex flex-col gap-1.5 mb-6 w-full items-center lg:items-start">
+                    <span class="flex items-center gap-2">
+                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                        SIPLab & MathSys
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+                        England, UK.
+                    </span>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 text-gray-400 mb-8">
+                    <!-- Google Scholar -->
+                    <a href="#" class="hover-transition hover:text-white"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 2.6L12 21.1l7.162-9L24 9.5 12 0z"/></svg></a>
+                    <!-- GitHub -->
+                    <a href="#" class="hover-transition hover:text-white"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                    <!-- LinkedIn -->
+                    <a href="#" class="hover-transition hover:text-white"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <!-- X / Twitter -->
+                    <a href="#" class="hover-transition hover:text-white"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                    <!-- Email -->
+                    <a href="#" class="hover-transition hover:text-white"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                </div>
+
+                <!-- News Section -->
+                <div class="w-full text-left">
+                    <h2 class="text-white font-bold mb-3 border-b border-[#2a2a2a] pb-2">News</h2>
+                    <ul class="text-[0.85rem] text-gray-400 space-y-3">
+                        <li>Developing new research topics in computer vision / multimodality in the UK.</li>
+                        <li>Presented a 🌟 HF Space.</li>
+                        <li>Released the code of <a href="#" class="text-blue-400 hover:underline">ZIP</a>.</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- ==========================================
+                 KOLOM TENGAH: PUBLICATIONS (span 6)
+            ========================================== -->
+            <main class="lg:col-span-6 w-full">
+                <!-- Judul Halaman -->
+                <h2 class="text-2xl font-bold text-center text-white pb-3 border-b-2 border-[#333333] mb-8">
+                    Publications
+                </h2>
+
+                <div class="flex flex-col gap-10">
+                    
+                    <!-- Item 1 -->
+                    <article>
+                        <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                            ZIP: Scalable Crowd Counting via Zero-Inflated Poisson Modeling
+                        </h3>
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <span class="text-sm text-gray-400">Jul 31, 2025</span>
+                            <span class="text-[0.7rem] border rounded px-1.5 py-0.5 tag-red">Preprint</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+                            <span class="border rounded px-1.5 py-0.5 tag-red">Crowd Counting</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-yellow">Zero-Inflated Poisson</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-green">Scalability</span>
+                        </div>
+                    </article>
+
+                    <!-- Item 2 -->
+                    <article>
+                        <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                            Interact with me: Joint Egocentric Forecasting of Intent to Interact, Attitude and Social Actions
+                        </h3>
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <span class="text-sm text-gray-400">Dec 21, 2024</span>
+                            <span class="text-[0.7rem] border rounded px-1.5 py-0.5 tag-blue">ICME</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+                            <span class="border rounded px-1.5 py-0.5 tag-yellow">Action Forecasting</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-green">Egocentric Vision</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-blue">AI for Social Good</span>
+                        </div>
+                    </article>
+
+                    <!-- Item 3 -->
+                    <article>
+                        <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                            CLIP-EBC: CLIP Can Count Accurately through Enhanced Blockwise Classification
+                        </h3>
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <span class="text-sm text-gray-400">Mar 14, 2024</span>
+                            <span class="text-[0.7rem] border rounded px-1.5 py-0.5 tag-green">ICME</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+                            <span class="border rounded px-1.5 py-0.5 tag-red">Crowd Counting</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-blue">CLIP</span>
+                        </div>
+                    </article>
+
+                    <!-- Item 4 -->
+                    <article>
+                        <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                            Robust Multiview Multimodal Driver Monitoring System Using Masked Multi-Head Self-Attention
+                        </h3>
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <span class="text-sm text-gray-400">Mar 21, 2023</span>
+                            <span class="text-[0.7rem] border rounded px-1.5 py-0.5 tag-red">CVPR</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-[0.7rem]">
+                            <span class="border rounded px-1.5 py-0.5 tag-yellow">Driver Monitoring System</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-blue">Multimodality</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-yellow">Multiview</span>
+                            <span class="border rounded px-1.5 py-0.5 tag-green">Attention Mechanism</span>
+                        </div>
+                    </article>
+
+                </div>
+            </main>
+
+            <!-- ==========================================
+                 KOLOM KANAN: WIDGETS (span 3)
+            ========================================== -->
+            <aside class="lg:col-span-3 w-full space-y-8 mt-8 lg:mt-0">
+                
+                <!-- Search Bar -->
+                <div>
+                    <h3 class="text-white font-bold flex items-center gap-2 mb-3">
+                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        Search
+                    </h3>
+                    <input type="text" placeholder="Search posts..." class="w-full bg-[#141414] border border-[#2a2a2a] text-sm text-white px-3 py-2 rounded focus:outline-none focus:border-gray-500 placeholder-gray-600">
+                </div>
+
+                <!-- Archives -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold flex items-center gap-2 text-[0.95rem]">
+                            <svg class="svg-icon text-gray-400" viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+                            Archives
+                        </h3>
+                        <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+                    </div>
+                    <ul class="text-sm text-gray-400 space-y-2">
+                        <li class="flex justify-between hover-transition cursor-pointer"><span>2025</span> <span>(1)</span></li>
+                        <li class="flex justify-between hover-transition cursor-pointer"><span>2024</span> <span>(2)</span></li>
+                        <li class="flex justify-between hover-transition cursor-pointer"><span>2023</span> <span>(1)</span></li>
+                        <li class="flex justify-between hover-transition cursor-pointer"><span>2022</span> <span>(2)</span></li>
+                    </ul>
+                </div>
+
+                <!-- Venues -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold flex items-center gap-2 text-[0.95rem]">
+                            <svg class="svg-icon text-gray-400" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+                            Venues
+                        </h3>
+                        <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[0.75rem]">
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">CVPR</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">ICIP</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">ICME</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">Preprint</span>
+                    </div>
+                </div>
+
+                <!-- Keywords -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold flex items-center gap-2 text-[0.95rem]">
+                            <svg class="svg-icon text-gray-400" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                            Keywords
+                        </h3>
+                        <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"/></svg>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[0.75rem]">
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">Action Forecasting</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">AI for Social Good</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">Attention Mechanism</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">CLIP</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">Crowd Counting</span>
+                        <span class="border rounded px-2 py-1 cursor-pointer tag-gray">Driver Monitoring System</span>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-6 border-t border-[#1a1a1a] text-center text-[0.8rem] text-gray-500">
+        © 2026 Yiming's Portfolio. Powered by <span class="text-gray-300 font-semibold">123Tool</span>.
+    </footer>
+
+</body>
+</html>
+
+```
