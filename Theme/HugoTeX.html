@@ -1,0 +1,201 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HugoTeX - Kaito Sugimoto</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Gaya LaTeX / Academic Paper */
+        :root {
+            --paper-bg: #fdfdfd;       /* Warna kertas putih gading tipis */
+            --tex-maroon: #990000;     /* Warna merah marun khas LaTeX */
+            --text-black: #1a1a1a;     /* Teks hitam pekat namun lembut */
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            color: var(--text-black);
+            /* Font Serif Mutlak untuk gaya akademik */
+            font-family: "Times New Roman", Times, "Noto Serif", Georgia, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container utama agar tetap ramping di tengah */
+        .academic-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Header (Center Aligned) */
+        .tex-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .site-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .author-name {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+
+        /* Bagian Abstract */
+        .abstract-section {
+            margin: 0 auto 4rem auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .abstract-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .abstract-content {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* Post List */
+        .post-item {
+            margin-bottom: 3.5rem;
+            text-align: left;
+        }
+
+        .post-title {
+            color: var(--tex-maroon);
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .post-tags {
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .post-tags a {
+            color: var(--tex-maroon);
+            text-decoration: underline;
+            margin-right: 0.75rem;
+        }
+
+        .post-excerpt {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .read-more {
+            color: var(--tex-maroon);
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* Footer */
+        .tex-footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="academic-container">
+        
+        <!-- Header: Nama Situs & Penulis -->
+        <header class="tex-header">
+            <h1 class="site-title">HugoTeX</h1>
+            <div class="author-name">Kaito Sugimoto</div>
+        </header>
+
+        <!-- Abstract Section -->
+        <section class="abstract-section">
+            <div class="abstract-title">Abstract</div>
+            <p class="abstract-content">
+                I'm a software engineer and a coffee enthusiast in Japan. My primary interest lies in the area of natural language processing.
+            </p>
+        </section>
+
+        <!-- Main Content: Posts -->
+        <main>
+            
+            <!-- Post 1 -->
+            <article class="post-item">
+                <h2><a href="#" class="post-title">Markdown Syntax Guide</a></h2>
+                <div class="post-meta">Mar 11, 2019</div>
+                <div class="post-tags">
+                    <a href="#">themes</a>
+                    <a href="#">syntax</a>
+                </div>
+                <p class="post-excerpt">
+                    This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+                </p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="post-item">
+                <h2><a href="#" class="post-title">Rich Content</a></h2>
+                <div class="post-meta">Mar 10, 2019</div>
+                <p class="post-excerpt">
+                    Hugo ships with several <a href="#" style="color: var(--tex-maroon); text-decoration: underline;">Built-in Shortcodes</a> for rich content, along with a <a href="#" style="color: var(--tex-maroon); text-decoration: underline;">Privacy Config</a> and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
+                </p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="post-item">
+                <h2><a href="#" class="post-title">Placeholder Text</a></h2>
+                <div class="post-meta">Mar 9, 2019</div>
+                <p class="post-excerpt">
+                    Lorem est tota propriore conpellat pectoribus de pectora summo.
+                </p>
+            </article>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="tex-footer">
+            <p>Made with Hugo &bull; Powered by 123Tool</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+```
