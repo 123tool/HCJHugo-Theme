@@ -1,0 +1,303 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Theme - A minimal, text-heavy theme for Hugo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menggunakan font sans-serif bersih yang mirip dengan tema aslinya */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Styling garis tipis khas tema Explore */
+        .faint-border {
+            border-color: #f0f0f0;
+        }
+
+        .card-border {
+            border-color: #e5e7eb;
+        }
+
+        /* Hover states ringan */
+        a {
+            transition: color 0.2s ease, opacity 0.2s ease;
+        }
+        
+        .title-hover:hover {
+            opacity: 0.7;
+        }
+        
+        .sidebar-link:hover {
+            color: #000000;
+        }
+
+        .tag-pill {
+            border: 1px solid #e5e7eb;
+            color: #6b7280;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 2px;
+            display: inline-block;
+            background: #ffffff;
+        }
+        .tag-pill:hover {
+            border-color: #d1d5db;
+            color: #374151;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="w-full border-b faint-border pt-6 pb-5 px-6 md:px-10 lg:px-16 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        
+        <!-- Logo & Tagline -->
+        <div class="flex flex-col">
+            <a href="#" class="flex items-center gap-2 text-[1.4rem] font-bold tracking-tight text-gray-900">
+                <!-- Blue Book/Pages Logo SVG -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4C4 2.89543 4.89543 2 6 2H18C19.1046 2 20 2.89543 20 4V20C20 21.1046 19.1046 22 18 22H6C4.89543 22 4 21.1046 4 20V4Z" fill="#3b82f6"/>
+                    <path d="M4 6H12V22H6C4.89543 22 4 21.1046 4 20V6Z" fill="#60a5fa"/>
+                    <path d="M8 8H16V10H8V8Z" fill="#ffffff" fill-opacity="0.5"/>
+                    <path d="M8 12H16V14H8V12Z" fill="#ffffff" fill-opacity="0.5"/>
+                </svg>
+                Explore Theme
+            </a>
+            <span class="text-xs text-gray-500 italic mt-0.5">A minimal, text-heavy theme for Hugo</span>
+        </div>
+
+        <!-- Navigation & Icons -->
+        <div class="flex items-center gap-6 text-[0.95rem] text-gray-600">
+            <nav class="flex gap-4">
+                <a href="#" class="hover:text-black">Posts</a>
+                <a href="#" class="hover:text-black">About</a>
+                <a href="#" class="hover:text-black">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3 border-l faint-border pl-4">
+                <!-- Search Icon -->
+                <button class="hover:text-black" aria-label="Search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <!-- Sun/Theme Icon -->
+                <button class="hover:text-black" aria-label="Toggle Theme">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout Container -->
+    <div class="flex-grow w-full max-w-[1300px] mx-auto px-6 md:px-10 lg:px-16 py-10 lg:py-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- ================= SIDEBAR (KIRI) ================= -->
+            <aside class="lg:col-span-3 lg:col-start-1">
+                
+                <!-- Recent Posts Section -->
+                <div class="mb-10">
+                    <h3 class="font-bold text-[1.05rem] text-gray-900 mb-4">Recent Posts</h3>
+                    <ul class="flex flex-col">
+                        <li class="py-3 border-b faint-border">
+                            <a href="#" class="text-[0.95rem] text-gray-800 sidebar-link block leading-snug mb-1">Hello World: A Guide to Getting Started</a>
+                            <div class="text-[0.7rem] text-gray-400 uppercase tracking-wider">Aug 20, 2025</div>
+                        </li>
+                        <li class="py-3 border-b faint-border">
+                            <a href="#" class="text-[0.95rem] text-gray-800 sidebar-link block leading-snug mb-1">Explore Theme Features</a>
+                            <div class="text-[0.7rem] text-gray-400 uppercase tracking-wider">Aug 19, 2025</div>
+                        </li>
+                        <li class="py-3 border-b faint-border">
+                            <a href="#" class="text-[0.95rem] text-gray-800 sidebar-link block leading-snug mb-1">Markdown & Typography Guide</a>
+                            <div class="text-[0.7rem] text-gray-400 uppercase tracking-wider">Aug 18, 2025</div>
+                        </li>
+                        <li class="py-3 border-b faint-border">
+                            <a href="#" class="text-[0.95rem] text-gray-800 sidebar-link block leading-snug mb-1">Customizing Your Theme</a>
+                            <div class="text-[0.7rem] text-gray-400 uppercase tracking-wider">Aug 17, 2025</div>
+                        </li>
+                        <li class="py-3 border-b faint-border">
+                            <a href="#" class="text-[0.95rem] text-gray-800 sidebar-link block leading-snug mb-1">Interactive Features</a>
+                            <div class="text-[0.7rem] text-gray-400 uppercase tracking-wider">Aug 16, 2025</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categories Section -->
+                <div class="mb-10">
+                    <h3 class="font-bold text-[1.05rem] text-gray-900 mb-4">Categories</h3>
+                    <ul class="flex flex-col text-[0.9rem] text-gray-700">
+                        <li class="py-2.5 border-b faint-border flex justify-between items-center">
+                            <a href="#" class="sidebar-link">Features</a>
+                            <span class="text-xs text-gray-400">2</span>
+                        </li>
+                        <li class="py-2.5 border-b faint-border flex justify-between items-center">
+                            <a href="#" class="sidebar-link">Getting Started</a>
+                            <span class="text-xs text-gray-400">2</span>
+                        </li>
+                        <li class="py-2.5 border-b faint-border flex justify-between items-center">
+                            <a href="#" class="sidebar-link">Theme Guide</a>
+                            <span class="text-xs text-gray-400">2</span>
+                        </li>
+                        <li class="py-2.5 border-b faint-border flex justify-between items-center">
+                            <a href="#" class="sidebar-link">Demo Content</a>
+                            <span class="text-xs text-gray-400">1</span>
+                        </li>
+                        <li class="py-2.5 border-b faint-border flex justify-between items-center">
+                            <a href="#" class="sidebar-link">Hugo</a>
+                            <span class="text-xs text-gray-400">1</span>
+                        </li>
+                        <li class="py-2.5 border-b faint-border flex justify-between items-center">
+                            <a href="#" class="sidebar-link">Layouts</a>
+                            <span class="text-xs text-gray-400">1</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tags Section -->
+                <div>
+                    <h3 class="font-bold text-[1.05rem] text-gray-900 mb-4">Tags</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="tag-pill">Demo</a>
+                        <a href="#" class="tag-pill">Features</a>
+                        <a href="#" class="tag-pill">Documentation</a>
+                        <a href="#" class="tag-pill">Guide</a>
+                        <a href="#" class="tag-pill">Hugo</a>
+                        <a href="#" class="tag-pill">Style</a>
+                        <a href="#" class="tag-pill">Typography</a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- ================= MAIN CONTENT (KANAN) ================= -->
+            <main class="lg:col-span-9 flex flex-col gap-6">
+                
+                <!-- Post Card 1 -->
+                <article class="border card-border rounded-sm p-6 sm:p-8 bg-white">
+                    <h2 class="text-[1.7rem] sm:text-3xl font-bold tracking-tight text-gray-900 mb-3 leading-tight">
+                        <a href="#" class="title-hover">Hello World: A Guide to Getting Started</a>
+                    </h2>
+                    
+                    <div class="flex items-center gap-4 text-[0.8rem] text-gray-500 mb-5">
+                        <span class="flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Aug 20, 2025
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Rain Doctor
+                        </span>
+                    </div>
+
+                    <p class="text-gray-600 mb-6 leading-relaxed text-[0.95rem]">
+                        This guide will walk you through the entire process of setting up a new Hugo site and installing the Explore theme. We'll cover installing Hugo, creating a site, adding the theme, and basic configuration to get you up and running quickly.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto">
+                        <!-- Category Tags -->
+                        <div class="flex gap-2">
+                            <a href="#" class="tag-pill">Getting Started</a>
+                            <a href="#" class="tag-pill">Hugo</a>
+                        </div>
+                        <!-- Plain Tags -->
+                        <div class="text-[0.75rem] text-gray-400">
+                            <a href="#" class="hover:text-gray-600">welcome</a>, 
+                            <a href="#" class="hover:text-gray-600">demo</a>, 
+                            <a href="#" class="hover:text-gray-600">hugo</a>, 
+                            <a href="#" class="hover:text-gray-600">guide</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post Card 2 -->
+                <article class="border card-border rounded-sm p-6 sm:p-8 bg-white">
+                    <h2 class="text-[1.7rem] sm:text-3xl font-bold tracking-tight text-gray-900 mb-3 leading-tight">
+                        <a href="#" class="title-hover">Explore Theme Features</a>
+                    </h2>
+                    
+                    <div class="flex items-center gap-4 text-[0.8rem] text-gray-500 mb-5">
+                        <span class="flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Aug 19, 2025
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Rain Doctor
+                        </span>
+                    </div>
+
+                    <p class="text-gray-600 mb-6 leading-relaxed text-[0.95rem]">
+                        Explore is a minimal, text-heavy theme for Hugo, designed for academic sites, personal blogs, and essays. This post provides a detailed overview of its features and configuration.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto">
+                        <div class="flex gap-2">
+                            <a href="#" class="tag-pill">Theme Guide</a>
+                        </div>
+                        <div class="text-[0.75rem] text-gray-400">
+                            <a href="#" class="hover:text-gray-600">features</a>, 
+                            <a href="#" class="hover:text-gray-600">documentation</a>, 
+                            <a href="#" class="hover:text-gray-600">hugo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post Card 3 -->
+                <article class="border card-border rounded-sm p-6 sm:p-8 bg-white">
+                    <h2 class="text-[1.7rem] sm:text-3xl font-bold tracking-tight text-gray-900 mb-3 leading-tight">
+                        <a href="#" class="title-hover">Markdown & Typography Guide</a>
+                    </h2>
+                    
+                    <div class="flex items-center gap-4 text-[0.8rem] text-gray-500 mb-5">
+                        <span class="flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Aug 18, 2025
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Rain Doctor
+                        </span>
+                    </div>
+
+                    <p class="text-gray-600 mb-6 leading-relaxed text-[0.95rem]">
+                        A demonstration of all the basic Markdown elements and typographic styles available in the Explore theme, including headings, lists, blockquotes, and more.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto">
+                        <div class="flex gap-2">
+                            <a href="#" class="tag-pill">Demo Content</a>
+                        </div>
+                        <div class="text-[0.75rem] text-gray-400">
+                            <a href="#" class="hover:text-gray-600">typography</a>, 
+                            <a href="#" class="hover:text-gray-600">markdown</a>, 
+                            <a href="#" class="hover:text-gray-600">style</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Post Card 4 (Potongan Bawah) -->
+                <article class="border card-border rounded-sm p-6 sm:p-8 bg-white opacity-60">
+                     <h2 class="text-[1.7rem] sm:text-3xl font-bold tracking-tight text-gray-900 mb-1 leading-tight">
+                        <a href="#" class="title-hover">Customizing Your Theme</a>
+                    </h2>
+                </article>
+
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Footer Tambahan untuk "Powered by 123Tool" -->
+    <footer class="w-full text-center py-6 mt-8 border-t faint-border text-[0.85rem] text-gray-500">
+        Theme <strong>Explore</strong>. Powered by <a href="#" class="text-gray-800 font-semibold hover:underline">123Tool</a>.
+    </footer>
+
+</body>
+</html>
+
+```
