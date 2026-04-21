@@ -1,0 +1,312 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prism | Lotus Docs Clone</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --lotus-blue: #5c7cfa;
+            --lotus-blue-hover: #4c6ef5;
+            --lotus-bg-active: rgba(92, 124, 250, 0.1);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+        }
+
+        /* Sidebar Styling */
+        .sidebar-left {
+            height: calc(100vh - 64px);
+            position: sticky;
+            top: 64px;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            @apply flex items-center gap-3 px-4 py-2 text-sm font-medium rounded-md transition-all;
+            color: var(--text-muted);
+        }
+
+        .nav-item:hover {
+            background-color: #f8fafc;
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background-color: var(--lotus-bg-active);
+            color: var(--lotus-blue);
+        }
+
+        .nav-sub-item {
+            @apply block py-1.5 pl-11 pr-4 text-xs font-medium transition-all border-l-2 border-transparent;
+            color: var(--text-muted);
+        }
+
+        .nav-sub-item:hover {
+            color: var(--text-main);
+        }
+
+        .nav-sub-item.active {
+            color: var(--lotus-blue);
+            border-left-color: var(--lotus-blue);
+        }
+
+        /* Code Block Styling (Prism-like) */
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .code-block::before {
+            content: 'html';
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            background: #334155;
+            color: #94a3b8;
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* TOC Right Styling */
+        .toc-item {
+            @apply block py-1 text-xs transition-all border-l-2 border-transparent pl-4;
+            color: var(--text-muted);
+        }
+
+        .toc-item:hover {
+            color: var(--text-main);
+        }
+
+        .toc-item.active {
+            background-color: var(--lotus-bg-active);
+            color: var(--lotus-blue);
+            border-left-color: var(--lotus-blue);
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        .search-shortcut {
+            @apply text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 ml-auto;
+        }
+
+        .prism-highlight { color: #f87171; } /* Dummy code colors */
+        .prism-tag { color: #818cf8; }
+        .prism-attr { color: #34d399; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 flex items-center px-4 lg:px-8">
+        <div class="flex items-center gap-2">
+            <!-- Lotus Logo Icon -->
+            <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold shadow-lg shadow-blue-200">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight hidden sm:block">Lotus Docs</span>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-xl mx-4 lg:mx-12">
+            <div class="relative flex items-center group">
+                <svg class="absolute left-3 w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" placeholder="Search..." class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 pl-10 pr-16 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                <div class="absolute right-3 flex items-center gap-1">
+                    <span class="search-shortcut">⌘/CTRL</span>
+                    <span class="search-shortcut">/</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex items-center gap-4 ml-auto">
+            <a href="#" class="text-slate-400 hover:text-slate-900"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            <a href="#" class="text-slate-400 hover:text-slate-900"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 00-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+            <button class="text-slate-400 hover:text-blue-500"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+        </div>
+    </header>
+
+    <div class="max-w-[1440px] mx-auto flex">
+        
+        <!-- Sidebar Kiri -->
+        <aside class="sidebar-left w-72 border-r border-slate-200 hidden lg:block py-6">
+            <nav class="space-y-1">
+                <a href="#" class="nav-item"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg> Overview</a>
+                <a href="#" class="nav-item"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> Quickstart</a>
+                <div class="space-y-1">
+                    <button class="nav-item active w-full flex justify-between">
+                        <span class="flex items-center gap-3"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Guides</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="space-y-1">
+                        <button class="nav-item w-full pl-8 justify-between">
+                            <span class="flex items-center gap-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7"/></svg> Features</span>
+                            <svg class="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <button class="nav-item w-full pl-8 justify-between">
+                            <span class="flex items-center gap-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Theme Options</span>
+                            <svg class="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="relative">
+                            <button class="nav-item w-full pl-8 justify-between active">
+                                <span class="flex items-center gap-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg> Shortcodes</span>
+                                <svg class="w-2 h-2 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                            <div class="mt-1 border-l-2 border-slate-100 ml-10 pl-1">
+                                <a href="#" class="nav-sub-item">Alerts</a>
+                                <a href="#" class="nav-sub-item">Tables</a>
+                                <a href="#" class="nav-sub-item">Tabs</a>
+                                <a href="#" class="nav-sub-item active">Prism</a>
+                                <a href="#" class="nav-sub-item">Markdownify</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="nav-item"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg> Landing Page</a>
+                <a href="#" class="nav-item"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Reference</a>
+                <div class="pt-4 mt-4 border-t border-slate-100">
+                    <a href="#" class="nav-item"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> Contributing</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Konten Utama -->
+        <main class="flex-1 min-w-0 py-8 lg:py-12 px-6 lg:px-16">
+            
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span>/</span>
+                <a href="#" class="hover:text-blue-500">Guides</a>
+                <span>/</span>
+                <a href="#" class="hover:text-blue-500">Shortcodes</a>
+                <span>/</span>
+                <span class="text-slate-900 font-medium">Prism</span>
+            </nav>
+
+            <!-- Page Title -->
+            <div class="flex items-center gap-4 mb-4">
+                <div class="p-2 bg-blue-50 rounded text-blue-600">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900">Prism</h1>
+            </div>
+            <p class="text-xl text-slate-500 mb-12">Cara menggunakan Prism Shortcode untuk sintaks penyorotan blok kode.</p>
+
+            <section class="prose prose-slate max-w-none">
+                <h2 class="text-3xl font-bold mb-6 text-slate-900">Prism Shortcode</h2>
+                <p class="text-slate-600 leading-relaxed">Ketika Prism diaktifkan di <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-slate-700">config.toml</code>, sintaks penyorotan juga dapat dicapai menggunakan shortcode Prism berpasangan. Bahasa kode dideklarasikan menggunakan parameter <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-slate-700">lang</code>:</p>
+                
+                <!-- Code Block Demo -->
+                <div class="code-block group">
+                    <button class="absolute top-4 right-4 bg-slate-700/50 hover:bg-slate-700 p-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-xs text-white">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        Copy
+                    </button>
+                    <div class="font-mono">
+                        <span class="text-slate-400">&lt;{{ prism lang="html" }}&gt;</span><br>
+                        <span class="prism-tag">&lt;html&gt;</span><br>
+                        &nbsp;&nbsp;<span class="prism-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="prism-tag">&lt;title&gt;</span>@My cool new product<span class="prism-tag">&lt;/title&gt;</span><br>
+                        &nbsp;&nbsp;<span class="prism-tag">&lt;/head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="prism-tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-slate-500">&lt;!-- Use action="/create-checkout-session.php" if your server is PHP based. --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="prism-tag">&lt;form</span> <span class="prism-attr">action</span>="/create-checkout-session" <span class="prism-attr">method</span>="POST"<span class="prism-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prism-tag">&lt;button</span> <span class="prism-attr">type</span>="submit"<span class="prism-tag">&gt;</span>Checkout<span class="prism-tag">&lt;/button&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="prism-tag">&lt;/form&gt;</span><br>
+                        &nbsp;&nbsp;<span class="prism-tag">&lt;/body&gt;</span><br>
+                        <span class="prism-tag">&lt;/html&gt;</span><br>
+                        <span class="text-slate-400">&lt;{{ /prism }}&gt;</span>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 leading-relaxed mt-8">Semua blok kode yang disorot oleh Prism menampilkan plugin <span class="text-blue-500 font-semibold underline">Tombol Salin ke Clipboard</span>. Arahkan kursor ke (atau ketuk pada perangkat seluler) contoh di atas dan tombol salin muncul di sudut kanan atas blok kode. Klik tombol ini untuk menyalin kode ke clipboard Anda.</p>
+
+                <h2 class="text-3xl font-bold mb-6 text-slate-900 mt-16">Line Highlighting</h2>
+                <p class="text-slate-600 leading-relaxed mb-8">Shortcode Prism dapat menyorot baris tertentu dan/atau rentang baris dalam blok kode menggunakan parameter <code class="bg-slate-100 px-1 py-0.5 rounded text-sm text-slate-700">line</code>:</p>
+
+                <!-- Code Block Demo 2 -->
+                <div class="code-block">
+                    <div class="font-mono">
+                        <span class="text-slate-400">&lt;{{ prism lang="html" line="2-4,6" }}&gt;</span><br>
+                        <span class="prism-tag">&lt;html&gt;</span><br>
+                        <div class="bg-blue-500/10 -mx-6 px-6">&nbsp;&nbsp;<span class="prism-tag">&lt;head&gt;</span></div>
+                        <div class="bg-blue-500/10 -mx-6 px-6">&nbsp;&nbsp;&nbsp;&nbsp;<span class="prism-tag">&lt;title&gt;</span>...<span class="prism-tag">&lt;/title&gt;</span></div>
+                        <div class="bg-blue-500/10 -mx-6 px-6">&nbsp;&nbsp;<span class="prism-tag">&lt;/head&gt;</span></div>
+                        <span class="text-slate-400">&lt;{{ /prism }}&gt;</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer Area -->
+            <footer class="mt-20 pt-10 border-t border-slate-100 text-center flex flex-col items-center gap-2">
+                <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Powered by 123Tool</p>
+                <p class="text-xs text-slate-400 italic">© 2024 LotusDocs Demo</p>
+            </footer>
+        </main>
+
+        <!-- Sidebar Kanan (TOC) -->
+        <aside class="hidden xl:block w-64 pt-12 pr-8 sticky top-16 h-fit">
+            <h3 class="text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-6">ON THIS PAGE</h3>
+            <nav class="space-y-1">
+                <a href="#" class="toc-item active">Prism Shortcode</a>
+                <a href="#" class="toc-item">Line Highlighting</a>
+                <a href="#" class="toc-item">Line Numbers</a>
+                <a href="#" class="toc-item">Line Number Anchors</a>
+                <a href="#" class="toc-item">Combined Line Parameters</a>
+                <a href="#" class="toc-item">File Highlight</a>
+                <a href="#" class="toc-item">Disable Prism</a>
+                <a href="#" class="toc-item">Command Line</a>
+            </nav>
+        </aside>
+    </div>
+
+    <script>
+        // Logika sederhana untuk efek aktif navigasi
+        console.log("LotusDocs Clone Initialized.");
+        
+        // Memastikan tombol copy muncul di konsol (hanya demo)
+        document.querySelectorAll('.code-block button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.nextElementSibling.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerText = 'Copied!';
+                    setTimeout(() => this.innerHTML = originalText, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
