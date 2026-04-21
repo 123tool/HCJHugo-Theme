@@ -1,0 +1,204 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lowkey Hugo | Minimalist Blog Theme</title>
+    <!-- Google Fonts: Menggunakan Inter untuk tampilan bersih dan modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container-custom {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Avatar styling */
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #666;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .nav-item:hover {
+            color: #000;
+        }
+
+        .nav-item.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Article List */
+        .post-entry {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .post-excerpt {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            margin-bottom: 0.75rem;
+        }
+
+        .read-more {
+            color: #2d6a4f; /* Teal/Green color from the demo */
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: opacity 0.2s;
+        }
+
+        .read-more:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding-bottom: 2rem;
+            font-size: 0.8rem;
+            color: #999;
+            text-align: center;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 640px) {
+            .nav-container {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-custom">
+        <!-- Header Section -->
+        <header class="flex flex-col items-start mb-8">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043&auto=format&fit=crop" alt="Cat Avatar" class="avatar">
+            <h1>Lowkey Hugo</h1>
+            
+            <nav class="nav-container flex gap-4 mt-2">
+                <a href="#" class="nav-item">HOME</a>
+                <a href="#" class="nav-item active">POSTS</a>
+                <a href="#" class="nav-item">CATEGORIES</a>
+                <a href="#" class="nav-item">TAGS</a>
+                <a href="#" class="nav-item">DONATE</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <h2 class="section-title">Latest Posts</h2>
+            <p class="section-subtitle">See What I've Written Lately</p>
+
+            <!-- Article 1 -->
+            <article class="post-entry">
+                <a href="#" class="post-title">Markdown Cheat Sheet</a>
+                <p class="post-excerpt">
+                    A Python dictionary is like a JavaScript object — it's a sequence of key:value pairs. So, you can create them like this:
+                </p>
+                <a href="#" class="read-more">Read This Article <span>&rarr;</span></a>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="post-entry">
+                <a href="#" class="post-title">Adding to a Dict in Python – How to Add to a Dictionary</a>
+                <p class="post-excerpt">
+                    A Python dictionary is like a JavaScript object — it's a sequence of key:value pairs. So, you can create them like this:
+                </p>
+                <a href="#" class="read-more">Read This Article <span>&rarr;</span></a>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="post-entry">
+                <a href="#" class="post-title">Adding to a Dict in Python – How to Add to a Dictionary</a>
+                <p class="post-excerpt">
+                    Filtering refers to the process of restricting the result set to contain only those elements that satisfy a specified condition. It is also known as selection.
+                </p>
+                <a href="#" class="read-more">Read This Article <span>&rarr;</span></a>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="post-entry">
+                <a href="#" class="post-title">How to Cache Expensive Database Queries Using the Momento</a>
+                <p class="post-excerpt">
+                    Caching is a technique used to speed up the delivery of data by storing copies of frequently accessed data in a fast, temporary storage area.
+                </p>
+                <a href="#" class="read-more">Read This Article <span>&rarr;</span></a>
+            </article>
+        </main>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>Powered by 123Tool</p>
+        </footer>
+    </div>
+
+    <script>
+        // Interaksi sederhana untuk navigasi (visual feedback)
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
