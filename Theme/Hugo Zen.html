@@ -1,0 +1,258 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo Zen theme | Minimalist Clone</title>
+    <style>
+        /* Menggunakan sistem font klasik untuk kesan "Zen" */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --nav-bg: #333333;
+            --nav-text: #ffffff;
+            --font-serif: "Times New Roman", Times, serif;
+            --font-sans: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header & Logo */
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .zen-logo {
+            font-size: 48px;
+            margin-right: 15px;
+            font-family: var(--font-serif);
+        }
+
+        .site-title {
+            font-family: var(--font-sans);
+            font-size: 32px;
+            font-weight: normal;
+        }
+
+        /* Navigation */
+        nav {
+            margin-bottom: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        nav li a {
+            display: inline-block;
+            background-color: var(--nav-bg);
+            color: var(--nav-text);
+            text-decoration: none;
+            padding: 5px 12px;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+
+        nav li a:hover {
+            opacity: 0.8;
+        }
+
+        nav li a.active {
+            text-decoration: underline;
+        }
+
+        /* Layout Main & Sidebar */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Main Content */
+        main {
+            font-family: var(--font-serif);
+        }
+
+        h1, h2 {
+            font-family: var(--font-sans);
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Sidebar */
+        aside {
+            font-family: var(--font-sans);
+        }
+
+        .sidebar-title {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .sidebar-list {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-list a {
+            color: var(--text-color);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            border-top: 1px solid #000;
+            padding-top: 20px;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 14px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .credits {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="zen-logo">禅</div>
+            <h1 class="site-title">Hugo Zen theme</h1>
+        </header>
+
+        <!-- Navigasi Utama -->
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Documentation</a></li>
+            </ul>
+        </nav>
+
+        <!-- Wrapper Konten -->
+        <div class="content-wrapper">
+            <!-- Bagian Utama -->
+            <main>
+                <h1>Hugo</h1>
+                <h2>Make the Web Fun Again</h2>
+                <p>
+                    Memperkenalkan Hugo, sebuah ide baru untuk membuat pembuatan situs web menjadi sederhana kembali. 
+                    Hugo bekerja secara fleksibel dengan banyak format, dan sangat ideal untuk blog, dokumen, portofolio, 
+                    dan banyak lagi. Kecepatan Hugo mendorong kreativitas—ini membuat pembuatan situs web menyenangkan kembali.
+                </p>
+
+                <h2>Run Anywhere</h2>
+                <p>
+                    Hugo kemungkinan besar adalah perangkat lunak termudah untuk diinstal yang pernah Anda gunakan: 
+                    cukup unduh dan jalankan! Hugo tidak bergantung pada hak administratif, basis data, waktu proses, 
+                    penerjemah, atau perpustakaan eksternal. Situs yang dibangun dengan Hugo dapat diterapkan di S3, 
+                    GitHub Pages, Dropbox, atau host web apa pun.
+                </p>
+            </main>
+
+            <!-- Bagian Sidebar -->
+            <aside>
+                <a href="#" class="sidebar-title">Documentation</a>
+                <ul class="sidebar-list">
+                    <li><a href="#">Configuration</a></li>
+                    <li><a href="#">Create a theme</a></li>
+                    <li><a href="#">Installation</a></li>
+                    <li><a href="#">Quickstart</a></li>
+                </ul>
+            </aside>
+        </div>
+
+        <!-- Bagian Footer -->
+        <footer>
+            <div class="footer-links">
+                Subscribe: <a href="#">RSS</a> | <a href="#">JSON</a>
+            </div>
+            <div class="credits">
+                Powered by <a href="#">Hugo</a> and the <a href="#">Zen theme</a>.
+                <br>
+                <span style="opacity: 0.7;">Powered by 123Tool</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Logika sederhana untuk demonstrasi klik navigasi
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                console.log("Navigating to: " + this.innerText);
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
