@@ -1,0 +1,341 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>danablog.dev - Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Pixel Klasik (VT323) -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Konfigurasi Tema 1-Bit Pixel */
+        :root {
+            --bg-color: #0a0a0a; /* Hitam pekat */
+            --text-color: #ffffff; /* Putih murni */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+            font-size: 1.25rem; /* Font agak besar agar pikselnya terlihat jelas */
+            line-height: 1.4;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* Efek antialiasing dimatikan agar font terlihat tajam/piksel */
+            -webkit-font-smoothing: none;
+            text-rendering: pixelated;
+        }
+
+        /* Navigasi Kiri Atas */
+        .top-nav {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .nav-item:hover {
+            text-decoration: underline;
+        }
+
+        /* Container Utama */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Ornamen Bintang/Bunga ASCII */
+        .ascii-separator {
+            text-align: center;
+            letter-spacing: 2px;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Kotak Panel (Borders) */
+        .pixel-box {
+            border: 1px solid var(--text-color);
+            border-radius: 4px;
+            padding: 1.25rem;
+            background-color: transparent;
+        }
+
+        /* Avatar Container (dengan ornamen bintang kecil) */
+        .avatar-box {
+            border: 1px solid var(--text-color);
+            border-radius: 4px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-image: radial-gradient(#ffffff 1px, transparent 0);
+            background-size: 15px 15px; /* Pola titik-titik di belakang avatar */
+        }
+
+        /* Filter agar avatar menjadi 1-bit hitam putih murni */
+        .pixel-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(200%) brightness(1.2);
+            image-rendering: pixelated;
+        }
+
+        /* Dropdown custom */
+        .pixel-dropdown {
+            border: 1px solid var(--text-color);
+            background: transparent;
+            color: var(--text-color);
+            padding: 0.2rem 0.5rem;
+            font-family: inherit;
+            font-size: inherit;
+            appearance: none;
+            width: 100%;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Panah dropdown buatan */
+        .dropdown-wrapper {
+            position: relative;
+        }
+        .dropdown-wrapper::after {
+            content: "▼";
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        /* HP Bar */
+        .hp-bar-container {
+            width: 60px;
+            height: 12px;
+            border: 1px solid var(--text-color);
+            padding: 1px;
+            display: flex;
+        }
+        .hp-bar-fill {
+            background-color: var(--text-color);
+            height: 100%;
+        }
+
+        /* Tombol Play */
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--text-color);
+            border-radius: 4px;
+            width: 40px;
+            height: 25px;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Link dengan garis bawah */
+        .pixel-link {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        .pixel-link:hover {
+            color: #aaaaaa;
+        }
+
+        /* Ikon SVG Pixel */
+        .svg-icon {
+            fill: currentColor;
+            shape-rendering: crispEdges; /* Membuat ujung vektor tajam seperti piksel */
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 2rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi Kiri Atas -->
+    <nav class="top-nav">
+        <a href="#" class="nav-item">^_^</a>
+        <a href="#" class="nav-item">open-source</a>
+        <a href="#" class="nav-item">write</a>
+        <a href="#" class="nav-item">me</a>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="main-container">
+        
+        <!-- Pemisah Atas -->
+        <div class="ascii-separator">
+            ✧･ﾟ: *✧･ﾟ:* ❁ *:･ﾟ✧*:･ﾟ✧
+        </div>
+
+        <!-- Grid Bagian Atas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+            
+            <!-- Kartu Profil (Kiri) -->
+            <div class="pixel-box flex flex-col gap-4">
+                <div class="flex gap-4">
+                    <!-- Avatar dengan Background Bintang Piksel -->
+                    <div class="avatar-box flex-shrink-0">
+                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=dana&backgroundColor=transparent" alt="avatar" class="pixel-avatar">
+                    </div>
+                    
+                    <!-- Info Profil & Kucing -->
+                    <div class="flex flex-col justify-between flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span>dana:</span>
+                        </div>
+                        <div class="dropdown-wrapper mb-2">
+                            <select class="pixel-dropdown">
+                                <option>wut up.</option>
+                            </select>
+                        </div>
+                        
+                        <div class="border border-white p-2 rounded relative">
+                            <!-- Judul melayang -->
+                            <span class="absolute -top-4 left-2 bg-[#0a0a0a] px-1">cats:</span>
+                            
+                            <!-- Kucing 1: buba -->
+                            <div class="flex items-center justify-between mb-1">
+                                <div class="flex items-center gap-2">
+                                    <!-- Ikon Kucing Inline SVG -->
+                                    <svg width="18" height="14" viewBox="0 0 18 14" class="svg-icon">
+                                        <path d="M0 0h2v2h2v2h10V2h2V0h2v6h-1v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6H0V0zm4 8h2v2H4V8zm8 0h2v2h-2V8zm-3 2h-2v2h2v-2z"/>
+                                    </svg>
+                                    <span>buba</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm">
+                                    <span>HP</span>
+                                    <div class="hp-bar-container"><div class="hp-bar-fill w-full"></div></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Kucing 2: meekz -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <svg width="18" height="14" viewBox="0 0 18 14" class="svg-icon">
+                                        <path d="M0 0h2v2h2v2h10V2h2V0h2v6h-1v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6H0V0zm4 8h2v2H4V8zm8 0h2v2h-2V8zm-3 2h-2v2h2v-2z"/>
+                                    </svg>
+                                    <span>meekz</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm">
+                                    <span>HP</span>
+                                    <div class="hp-bar-container"><div class="hp-bar-fill w-1/2"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-[1.15rem] leading-snug">
+                    Introduce yourself here! Give the audience a little summary/introduction about what to expect in this ASCII, black and white, pixel focused theme.
+                </p>
+            </div>
+
+            <!-- Kartu Status & Watching (Kanan) -->
+            <div class="flex flex-col gap-4">
+                <!-- Status -->
+                <div class="pixel-box">
+                    <div class="mb-2">Status</div>
+                    <div class="mb-4 tracking-widest text-lg">♥ ♥ ♡</div>
+                    <p class="text-[1.15rem] leading-snug">
+                        A way to let everyone know what you're up to..
+                    </p>
+                </div>
+                
+                <!-- Watching -->
+                <div class="pixel-box flex-grow">
+                    <div class="mb-1">watching</div>
+                    <div class="play-btn">
+                        <svg width="10" height="10" viewBox="0 0 10 10" class="svg-icon"><path d="M0 0v10l10-5z"/></svg>
+                    </div>
+                    <p class="mt-2 text-[1.15rem] leading-snug">
+                        <a href="#" class="pixel-link">How to create a Hugo theme from scratch - Berkay Cubuk / (HugoConf 2023)</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Badge RAWR! -->
+        <div class="my-8 relative flex justify-start w-full max-w-4xl">
+            <!-- Membuat border bergerigi menggunakan SVG inline -->
+            <div class="relative inline-flex items-center justify-center">
+                <svg width="80" height="34" viewBox="0 0 80 34" fill="none" class="svg-icon" stroke="white" stroke-width="2">
+                    <path d="M5 5 L10 10 L5 17 L10 24 L5 29 H75 L70 24 L75 17 L70 10 L75 5 Z" />
+                </svg>
+                <span class="absolute text-lg font-bold">rawr!</span>
+            </div>
+        </div>
+
+        <!-- Grid Bagian Bawah (Posts) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+            
+            <!-- Example 1 -->
+            <div class="pixel-box flex flex-col justify-between min-h-[140px]">
+                <div>
+                    <div class="flex items-center gap-2 mb-4 text-xl">
+                        <span>📄</span> example1
+                    </div>
+                    <p class="text-[1.15rem] mb-4">Some flavor text here...</p>
+                </div>
+                <a href="#" class="pixel-link text-[1.1rem]">Read more...</a>
+            </div>
+
+            <!-- Example 2 -->
+            <div class="pixel-box flex flex-col justify-between min-h-[140px]">
+                <div>
+                    <div class="flex items-center gap-2 mb-4 text-xl">
+                        <span>♡</span> example2
+                    </div>
+                    <p class="text-[1.15rem] mb-4">Some flavor text here...</p>
+                </div>
+                <a href="#" class="pixel-link text-[1.1rem]">Read more...</a>
+            </div>
+
+        </div>
+
+        <!-- Pemisah Bawah -->
+        <div class="ascii-separator mt-10">
+            ✧･ﾟ: *✧･ﾟ:* ❁ *:･ﾟ✧*:･ﾟ✧
+        </div>
+
+    </div>
+
+    <!-- Footer Kiri Bawah -->
+    <footer class="footer">
+        Made with ♡ Digio &lt; . Powered by <a href="#" class="pixel-link">123Tool</a>.
+    </footer>
+
+</body>
+</html>
+
+```
