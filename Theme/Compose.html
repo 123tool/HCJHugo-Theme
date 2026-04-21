@@ -1,0 +1,220 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compose Theme Clone | Hugo Documentation</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #161616;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --brand-green: #00d166;
+            --brand-amber: #f59e0b;
+            --card-bg: #1f1f1f;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Search Bar Custom */
+        .search-container {
+            background-color: #262626;
+            border: 1px solid #333;
+            transition: border-color 0.2s;
+        }
+        .search-container:focus-within {
+            border-color: var(--brand-green);
+        }
+
+        /* Callout Blocks */
+        .callout {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+        .callout-amber { border-left-color: var(--brand-amber); }
+        .callout-green { border-left-color: var(--brand-green); }
+
+        .callout-icon {
+            position: absolute;
+            left: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .icon-amber { background-color: var(--brand-amber); color: #000; }
+        .icon-green { background-color: var(--brand-green); color: #000; }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            width: 44px;
+            height: 22px;
+            background-color: var(--brand-green);
+            border-radius: 99px;
+            position: relative;
+            cursor: pointer;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: 3px;
+            width: 16px;
+            height: 16px;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .hero-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-green {
+            background-color: var(--brand-green);
+            color: #000;
+            transition: opacity 0.2s;
+        }
+        .btn-green:hover { opacity: 0.9; }
+
+        .btn-outline {
+            border: 1px solid #444;
+            transition: background-color 0.2s;
+        }
+        .btn-outline:hover { background-color: rgba(255, 255, 255, 0.05); }
+
+        footer {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-2 cursor-pointer">
+            <div class="w-8 h-8 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="M2 2l7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight">Compose</span>
+        </div>
+
+        <!-- Search (Center) -->
+        <div class="hidden md:flex flex-1 max-w-md mx-12">
+            <div class="search-container flex items-center w-full px-4 py-2 rounded-lg gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" placeholder="Search the docs" class="bg-transparent border-none outline-none text-sm w-full text-gray-300">
+            </div>
+        </div>
+
+        <!-- Links (Right) -->
+        <div class="flex items-center gap-6 text-sm font-medium">
+            <a href="#" class="text-gray-400 hover:text-white transition">Docs</a>
+            <a href="#" class="text-gray-400 hover:text-white transition">Example</a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <div class="toggle-switch hidden sm:block"></div>
+        </div>
+    </header>
+
+    <!-- Main Hero Content -->
+    <main class="max-w-7xl mx-auto px-6 pt-16 pb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left Side: Text -->
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                    Compose your Docs with <span class="text-gray-400">Ease.</span>
+                </h1>
+                
+                <p class="text-lg text-gray-400 max-w-lg">
+                    Compose is a lean <span class="text-amber-500">Hugo</span> documentation theme, inspired by <a href="#" class="text-emerald-500 hover:underline">forestry.io</a>.
+                </p>
+
+                <!-- Callouts -->
+                <div class="space-y-4">
+                    <div class="callout callout-amber p-4 pl-8 rounded-r-md">
+                        <div class="callout-icon icon-amber">!</div>
+                        <p class="text-sm text-gray-300">
+                            Feel free to open a <span class="text-amber-500">PR</span>, raise an issue(s) or request new feature(s).
+                        </p>
+                    </div>
+
+                    <div class="callout callout-green p-4 pl-8 rounded-r-md">
+                        <div class="callout-icon icon-green">i</div>
+                        <p class="text-sm text-gray-300">
+                            You can generate diagrams, flowcharts, and piecharts from text in a similar manner as markdown using <span class="text-emerald-500">mermaid</span>.
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            Or, <span class="text-emerald-500 underline">generate graphs, charts</span> and tables from a csv, <span class="line-through opacity-50">or a json file</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#" class="btn-green px-8 py-3 rounded font-semibold text-sm">Read the Docs</a>
+                    <a href="#" class="btn-outline px-8 py-3 rounded font-semibold text-sm">Download Theme</a>
+                </div>
+            </div>
+
+            <!-- Right Side: Image -->
+            <div class="relative">
+                <div class="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Person Writing" 
+                     class="hero-image relative w-full h-[450px] object-cover">
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium uppercase tracking-widest">
+        <div>© 2021 Weru</div>
+        <div class="opacity-40">Powered by 123Tool</div>
+    </footer>
+
+    <script>
+        // Logika sederhana untuk demonstrasi interaksi
+        document.querySelector('.toggle-switch').addEventListener('click', function() {
+            alert("Mode gelap sudah aktif. Ini adalah tema Compose yang dioptimalkan untuk pengembang.");
+        });
+
+        console.log("Compose Theme Clone Loaded Successfully.");
+    </script>
+</body>
+</html>
+
+```
