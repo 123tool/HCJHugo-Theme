@@ -1,0 +1,236 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>console-demo:~# | Hugo Console Clone</title>
+    <!-- Menggunakan font JetBrains Mono untuk kesan Terminal yang tajam -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-blue: #3ba7e9;
+            --muted-text: #666666;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Navigasi Bergaya Terminal */
+        .terminal-prompt {
+            color: var(--accent-blue);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* ASCII Underlining */
+        .ascii-header {
+            font-weight: bold;
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        .ascii-line {
+            line-height: 0.5;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Post Layout */
+        .post-entry {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .post-date {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .post-title {
+            color: var(--accent-blue);
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+        }
+
+        .post-summary {
+            font-size: 0.9rem;
+            color: var(--muted-text);
+            margin-top: 0.5rem;
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .photo-item {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s;
+        }
+
+        .photo-item img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.8rem;
+            color: var(--muted-text);
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .nav-link {
+                margin-left: 0;
+                margin-right: 1rem;
+            }
+            .post-entry {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-12">
+            <a href="#" class="terminal-prompt">console-demo:~#</a>
+            <nav class="flex">
+                <a href="#" class="nav-link">about/</a>
+                <a href="#" class="nav-link">posts/</a>
+                <a href="#" class="nav-link">photos/</a>
+            </nav>
+        </header>
+
+        <!-- Section: About -->
+        <section class="mb-12">
+            <h2 class="ascii-header">About</h2>
+            <div class="ascii-line">=====</div>
+            <p>
+                Console adalah tema minimal, responsif, dan ringan untuk Hugo yang terinspirasi oleh konsol Linux. 
+                <a href="#" style="color: var(--accent-blue); text-decoration: underline;">(more)</a>
+            </p>
+        </section>
+
+        <!-- Section: Latest Posts -->
+        <section class="mb-12">
+            <h2 class="ascii-header">Latest posts</h2>
+            <div class="ascii-line">============</div>
+
+            <!-- Post 1 -->
+            <article class="post-entry">
+                <div class="post-date">Aug. 3, 2019</div>
+                <div>
+                    <a href="#" class="post-title">Introduction</a>
+                    <div class="ascii-line" style="margin-bottom: 0.5rem; color: var(--muted-text);">============</div>
+                    <p class="post-summary">
+                        Hugo adalah proyek sumber terbuka dan hidup berkat kerja keras para kontributornya. Ada banyak isu terbuka, dan kami butuh bantuan Anda untuk membuat Hugo menjadi lebih hebat lagi. Anda tidak perlu menjadi ahli Go untuk berkontribusi pada pengembangan proyek ini.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="post-entry">
+                <div class="post-date">Jul. 1, 2019</div>
+                <div>
+                    <a href="#" class="post-title">What is Hugo</a>
+                    <div class="ascii-line" style="margin-bottom: 0.5rem; color: var(--muted-text);">============</div>
+                    <p class="post-summary">
+                        Hugo adalah generator situs statis yang cepat dan modern yang ditulis dalam bahasa pemrograman Go, dan dirancang untuk membuat pembuatan situs web menjadi menyenangkan kembali.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <!-- Section: Latest Photos -->
+        <section class="mb-12">
+            <h2 class="ascii-header">Latest photos</h2>
+            <div class="ascii-line">=============</div>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1512100356956-c1b47f4b8a25?q=80&w=800&auto=format&fit=crop" alt="Arsitektur">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?q=80&w=800&auto=format&fit=crop" alt="Laut">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1495195129352-aec325a55b65?q=80&w=800&auto=format&fit=crop" alt="Pemandangan">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            Powered by <a href="#">Hugo</a> with <a href="#">Console Theme</a>.
+            <div class="mt-2 opacity-50">Powered by 123Tool</div>
+        </footer>
+    </div>
+
+    <script>
+        // Logika sederhana untuk simulasi terminal (opsional)
+        console.log("Hugo Console Theme Initialized...");
+        console.log("Current path: /home/user/console-demo");
+    </script>
+</body>
+</html>
+
+```
