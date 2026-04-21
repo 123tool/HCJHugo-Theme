@@ -1,0 +1,135 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo Simple - Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Dasar Tema Hugo Simple */
+        body {
+            /* Font sistem default agar super cepat dimuat, sesuai filosofi temanya */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333333;
+        }
+
+        /* Gaya Tautan (Link) warna Biru Khas */
+        .link-blue {
+            color: #0366d6;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: color 0.2s ease;
+        }
+        .link-blue:hover {
+            color: #005cc5;
+        }
+
+        /* Gaya Tombol Navigasi (Pill Buttons) */
+        .nav-btn {
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.9rem;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            text-decoration: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .nav-btn:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        /* Gaya Kutipan (Blockquote) */
+        .simple-quote {
+            border-left: 3px solid #1e40af; /* Garis biru tua di sisi kiri */
+            padding-left: 1.25rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            margin: 1rem 0;
+            color: #555555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-[#f8f9fa] border-b border-gray-200 pt-8 pb-10 flex flex-col items-center">
+        <!-- Navigation Buttons -->
+        <nav class="flex gap-3 mb-8">
+            <a href="#" class="nav-btn">Home</a>
+            <a href="#" class="nav-btn">Blog</a>
+            <a href="#" class="nav-btn">
+                <!-- SVG Icon RSS -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 11a9 9 0 0 1 9 9"></path>
+                    <path d="M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                RSS
+            </a>
+        </nav>
+        
+        <!-- Logo Kaomoji Beruang -->
+        <a href="#" class="text-[2.75rem] font-bold text-gray-900 tracking-wider text-decoration-none hover:opacity-80 transition-opacity">
+            ʕ•ᴥ•ʔ
+        </a>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow w-full max-w-[720px] mx-auto px-6 py-12 flex flex-col gap-6 text-[1.05rem] leading-relaxed">
+        
+        <p>
+            Today's websites are bloated, slow, and full of scripts, ads, and trackers. This became so
+            commonplace that we lost all sense of perspective, to the point that we now think multi-megabyte webpages are normal.
+        </p>
+
+        <!-- Blockquote -->
+        <blockquote class="simple-quote">
+            <p class="mb-4">
+                The internet has become a bloated mess. Huge JavaScript libraries, countless
+                client-side queries and overly complex frontend frameworks are par for the course
+                these days.
+            </p>
+            <p>
+                — <a href="#" class="link-blue not-italic">Kev Quirk</a>
+            </p>
+        </blockquote>
+
+        <p>
+            Let's change this, one website at a time! <strong class="text-black font-semibold">Hugo Simple</strong> is a <a href="#" class="link-blue">Hugo</a> theme based on <a href="#" class="link-blue">Hugo
+            Bear</a> that takes care of speed and optimization, so you can focus on writing good
+            content.
+        </p>
+
+        <p>
+            It is free, multilingual, optimized for search engines, no-nonsense, responsive, light, and
+            fast. Really fast.
+        </p>
+
+        <p>
+            Made with 💟 by <a href="#" class="link-blue">Shaolong Chen</a>.
+        </p>
+        
+        <!-- Garis Pemisah (Divider) -->
+        <hr class="border-gray-200 mt-10 mb-6">
+        
+        <!-- Footer -->
+        <footer class="text-center text-sm text-gray-500 pb-10">
+            Made with <a href="#" class="link-blue">Hugo ʕ•ᴥ•ʔ Simple</a>. Powered by <a href="#" class="link-blue">123Tool</a>.
+        </footer>
+        
+    </main>
+
+</body>
+</html>
+
+```
