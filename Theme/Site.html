@@ -1,0 +1,116 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My New Hugo Site | No Style Please</title>
+    <style>
+        /* Filosofi: Hampir tanpa CSS, hanya untuk tata letak dasar dan font */
+        body {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        ul ul {
+            list-style-type: square;
+            padding-left: 1.5rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.2rem;
+        }
+
+        a {
+            color: #0000ee;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #551a8b;
+        }
+
+        .date {
+            color: #000;
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My New Hugo Site</h1>
+
+    <ul>
+        <li>info
+            <ul>
+                <li>a (nearly) no-CSS, fast, minimalist Hugo theme ported from <a href="#">riggraz/no-style-please</a>.</li>
+                <li><a href="#">github repo</a></li>
+                <li>used by <a href="#">riggraz.dev</a> and <a href="#">many others</a></li>
+            </ul>
+        </li>
+        
+        <li>all posts
+            <ul>
+                <li><span class="date">2020-07-09</span> <a href="#">headings and toc</a></li>
+                <li><span class="date">2020-07-09</span> <a href="#">hr</a></li>
+                <li><span class="date">2020-07-08</span> <a href="#">Language Tests</a></li>
+                <li><span class="date">2020-07-08</span> <a href="#">very very very long title and very very very short content</a></li>
+                <li><span class="date">2020-07-07</span> <a href="#">overview</a></li>
+                <li><a href="#">See archive...</a></li>
+            </ul>
+        </li>
+
+        <li>posts by category
+            <ul>
+                <li><span class="date">2020-07-09</span> <a href="#">headings and toc</a></li>
+                <li><span class="date">2020-07-09</span> <a href="#">hr</a></li>
+                <li><span class="date">2020-07-08</span> <a href="#">Language Tests</a></li>
+                <li><span class="date">2020-07-08</span> <a href="#">very very very long title and very very very short content</a></li>
+                <li><span class="date">2020-07-07</span> <a href="#">overview</a></li>
+                <li><span class="date">2020-07-06</span> <a href="#">strange post with custom js</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#">rss</a></li>
+    </ul>
+
+    <footer>
+        <p>Powered by 123Tool</p>
+    </footer>
+
+</body>
+</html>
+
+```
