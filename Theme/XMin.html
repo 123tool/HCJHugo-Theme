@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUGO XMIN | Keep it simple, but not simpler</title>
+    <!-- Google Fonts: Palatino atau Serif untuk kesan akademik/minimalis -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- KaTeX untuk merender rumus matematika -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --link-color: #0000ee;
+            --code-bg: #f8f8f8;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigasi */
+        nav {
+            text-align: center;
+            border-bottom: 1px dotted var(--border-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        nav a {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: var(--link-color);
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f5;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .octocat {
+            float: right;
+            width: 100px;
+            height: 100px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        /* Konten */
+        code, pre {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--code-bg);
+            font-size: 15px;
+        }
+
+        pre {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .math-block {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2rem;
+        }
+
+        /* Daftar Postingan */
+        .post-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+            border-top: 1px dotted var(--border-color);
+            padding-top: 20px;
+        }
+
+        .post-list li {
+            margin-bottom: 8px;
+        }
+
+        .post-date {
+            font-family: monospace;
+            margin-right: 15px;
+            color: #666;
+        }
+
+        .post-link {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px dotted var(--border-color);
+            padding-top: 20px;
+            color: #666;
+        }
+
+        footer a {
+            color: var(--link-color);
+            margin: 0 5px;
+        }
+
+        .powered-by {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-top: 10px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 600px) {
+            .octocat {
+                float: none;
+                display: block;
+                margin: 0 auto 20px;
+            }
+            header { text-align: center; }
+            .container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Navigasi -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Categories</a>
+            <a href="#">Tags</a>
+            <a href="#">Subscribe</a>
+        </nav>
+
+        <!-- Header Section -->
+        <header>
+            <!-- GitHub Octocat Logo Placeholder -->
+            <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="GitHub Logo" class="octocat">
+            <h1>HUGO XMIN</h1>
+            <p class="slogan">Keep it simple, but not simpler</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <p>
+                <strong>XMin</strong> adalah tema Hugo yang ditulis oleh <a href="#" class="post-link">Yihui Xie</a> dalam waktu sekitar empat jam: setengah jam dihabiskan untuk template Hugo, dan 3,5 jam dihabiskan untuk gaya (styling). Motivasi utama penulisan tema ini adalah memberikan contoh yang benar-benar minimal bagi pemula template Hugo. Tema XMin ini berisi sekitar 130 baris kode secara total, termasuk kode dalam template HTML dan CSS.
+            </p>
+
+            <pre><code>find . -not -path "*/exampleSite/*" \( -name "*.html" -o -name "*.css" \) | xargs wc -l</code></pre>
+
+            <pre><code>   18 ./layouts/_default/list.html
+   12 ./layouts/_default/single.html
+   16 ./layouts/_default/terms.html
+    9 ./layouts/partials/footer.html
+   19 ./layouts/partials/header.html
+   58 ./static/css/style.css
+  136 total</code></pre>
+
+            <p>
+                Saya tentu bisa mengurangi kodenya lebih jauh, misalnya dengan menghilangkan CSS, tetapi saya percaya sedikit CSS dapat meningkatkan keterbacaan secara signifikan. Anda tidak akan menemukan banyak framework CSS yang hanya berisi 50 baris kode.
+            </p>
+
+            <p>
+                Meskipun ini adalah tema minimal, tema ini sebenarnya berfungsi penuh. Tema ini mendukung halaman (termasuk halaman beranda), postingan blog, menu navigasi, kategori, tag, dan RSS. Dengan sedikit penyesuaian, tema ini dapat dengan mudah mendukung ekspresi matematika LaTeX, misalnya,
+            </p>
+
+            <div class="math-block">
+                $$\sqrt{n}\left(\left(\frac{1}{n}\sum_{i=1}^{n}X_i\right)-\mu\right) \xrightarrow{d} N(0, \sigma^2)$$
+            </div>
+
+            <p>
+                Semua halaman yang tidak berada di bawah direktori root situs web terdaftar di bawah ini. Anda juga dapat mengunjungi halaman daftar dari satu bagian, misal, <a href="#" class="post-link">postingan</a> atau <a href="#" class="post-link">catatan</a>. Lihat halaman <a href="#" class="post-link">Tentang</a> untuk penggunaan tema ini.
+            </p>
+
+            <!-- Daftar Postingan -->
+            <ul class="post-list">
+                <li><span class="post-date">2017/06/14</span> <a href="#" class="post-link">Another Note on A blogdown Tutorial</a></li>
+                <li><span class="post-date">2017/06/13</span> <a href="#" class="post-link">A Quick Note on Two Beautiful Websites</a></li>
+                <li><span class="post-date">2016/02/14</span> <a href="#" class="post-link">A Plain Markdown Post</a></li>
+                <li><span class="post-date">2015/07/23</span> <a href="#" class="post-link">Lorem Ipsum</a></li>
+            </ul>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <span>© Yihui Xie 2017 |</span>
+            <a href="#">Github</a> |
+            <a href="#">Twitter</a>
+            <div class="powered-by">Powered by 123Tool</div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Render rumus matematika KaTeX otomatis
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError : false
+            });
+            console.log("Hugo XMin Clone Initialized.");
+        });
+    </script>
+</body>
+</html>
+
+```
