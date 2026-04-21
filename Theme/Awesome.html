@@ -1,0 +1,151 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome hugo blog | Blog Minimalis</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#111111',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .post-link {
+            @apply flex justify-between items-center py-2 transition-opacity hover:opacity-70;
+        }
+        .nav-link {
+            @apply hover:underline transition-all;
+        }
+    </style>
+</head>
+<body class="bg-white text-black dark:bg-darkBg dark:text-white font-sans antialiased">
+
+    <!-- Navigasi -->
+    <nav class="max-w-2xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <div class="flex items-center gap-4 text-sm font-medium">
+            <a href="#" class="nav-link font-bold underline decoration-2 underline-offset-4">Home</a>
+            <a href="#" class="nav-link">Posts</a>
+            <a href="#" class="nav-link">About</a>
+            <span class="text-gray-300 dark:text-gray-700">|</span>
+            <button id="theme-toggle" class="p-1 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white">
+                <!-- Sun Icon -->
+                <svg id="sun-icon" class="hidden w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <!-- Moon Icon -->
+                <svg id="moon-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <main class="max-w-2xl mx-auto px-6 pt-16 pb-32">
+        <!-- Hero Section -->
+        <div class="flex flex-col items-center text-center mb-24">
+            <div class="w-20 h-20 rounded-full overflow-hidden mb-6 border border-gray-200 dark:border-gray-800">
+                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=200&h=200&fit=crop" alt="Avatar" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-2xl font-bold mb-3 tracking-tight">Awesome hugo blog</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm max-w-sm leading-relaxed">
+                A minimalistic Hugo theme with light and dark mode support, for running a personal site or blog.
+            </p>
+        </div>
+
+        <!-- Recent Posts Section -->
+        <section>
+            <h2 class="text-sm font-bold uppercase tracking-widest mb-6 dark:text-gray-100">Recent Posts</h2>
+            <div class="space-y-1">
+                <!-- Post Item 1 -->
+                <a href="#" class="post-link">
+                    <span class="text-sm font-medium">Markdown Syntax Guide</span>
+                    <span class="text-xs text-gray-500 font-mono">Feb 11, 2023</span>
+                </a>
+                <!-- Post Item 2 -->
+                <a href="#" class="post-link">
+                    <span class="text-sm font-medium">Rich Content</span>
+                    <span class="text-xs text-gray-500 font-mono">Feb 9, 2023</span>
+                </a>
+                <!-- Post Item 3 -->
+                <a href="#" class="post-link">
+                    <span class="text-sm font-medium">Placeholder Text</span>
+                    <span class="text-xs text-gray-500 font-mono">Feb 7, 2023</span>
+                </a>
+                <!-- Post Item 4 -->
+                <a href="#" class="post-link">
+                    <span class="text-sm font-medium">Math Typesetting</span>
+                    <span class="text-xs text-gray-500 font-mono">Feb 5, 2023</span>
+                </a>
+                <!-- Post Item 5 -->
+                <a href="#" class="post-link">
+                    <span class="text-sm font-medium">Emoji Support</span>
+                    <span class="text-xs text-gray-500 font-mono">Feb 1, 2023</span>
+                </a>
+            </div>
+            
+            <div class="mt-8">
+                <a href="#" class="text-sm text-gray-500 hover:text-black dark:hover:text-white underline underline-offset-4">See all posts</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-2xl mx-auto px-6 py-12 text-center text-[10px] uppercase tracking-[0.2em] font-bold text-gray-300 dark:text-gray-800">
+        Powered by 123Tool
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+
+        function updateIcons() {
+            if (html.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            updateIcons();
+        });
+
+        // Inisialisasi tema
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            html.classList.remove('dark');
+        }
+        updateIcons();
+
+        console.log("Hugo Blog Awesome Clone dimuat.");
+    </script>
+</body>
+</html>
+
+```
