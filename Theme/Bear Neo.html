@@ -1,0 +1,226 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rokcso's Blog - Clone</title>
+    <!-- Tailwind CSS (Digunakan untuk reset dan struktur dasar) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Font & Warna Spesifik Tema Bear Neo */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #333333;       /* Abu-abu sangat gelap untuk teks biasa */
+            --text-light: #666666;      /* Abu-abu lebih terang untuk list/deskripsi */
+            --link-color: #3b82f6;      /* Warna biru untuk tautan (Tailwind blue-500) */
+            --highlight-bg: #bfdbfe;    /* Latar biru terang untuk blok nama (Tailwind blue-200) */
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Pembungkus Konten Utama (Terpusat) */
+        .content-container {
+            max-width: 650px; /* Lebar dibatasi agar teks tidak terlalu panjang ke kanan */
+            width: 100%;
+            padding: 3rem 1.5rem 4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling Header / Judul Situs */
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        /* Menu Navigasi Atas */
+        .nav-menu {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .nav-menu a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        
+        .nav-menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Judul Besar (Hi! This is...) */
+        .greeting-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Blok Warna Latar Biru pada Nama */
+        .name-highlight {
+            background-color: var(--highlight-bg);
+            padding: 0 0.5rem;
+            border-radius: 4px;
+            color: var(--text-main);
+        }
+
+        /* Paragraf Biasa */
+        p {
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Paragraf Bold / Penting */
+        p.bold-intro {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        /* Styling Tautan Umum */
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Judul Bagian (New, Pin, Explore) */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Daftar List (Bulleted) */
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        li a {
+            color: var(--link-color);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .footer a {
+            color: var(--link-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-container">
+        
+        <!-- Header & Nav -->
+        <header>
+            <div class="site-title">Rokcso's Blog</div>
+            <nav class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">Now</a>
+                <a href="#">Blog</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Judul Salam & Highlight -->
+            <div class="greeting-title">
+                Hi! 👋 This is <span class="name-highlight">Rokcso</span> .
+            </div>
+
+            <p>Nice to meet you. ❤️</p>
+
+            <p class="bold-intro">I'm a Product Manager by day, a Product Creator by night.</p>
+
+            <p>Live in <a href="#">Hangzhou</a>, an ancient, beautiful and comfortable city in China.</p>
+
+            <p>I enjoy riding 🛵 <a href="#">motorcycle</a>, love cooking, and have a cat named 🐈 <a href="#">Suisui</a>.</p>
+
+            <p>I write <a href="#">some texts</a>, about life, technology, and curiosity, among other things. You can also learn about the latest me <a href="#">here</a>.</p>
+
+            <!-- Bagian: New -->
+            <h2 class="section-title">✨ New</h2>
+            <ul>
+                <li><a href="#">译 > 致 Arc 用户的一封信 2025 年信</a></li>
+                <li><a href="#">Markdown 中的超链接有几种写法？</a></li>
+                <li><a href="#">在 Hugo 复制 Bear Blog 的 Upvote Button</a></li>
+                <li><a href="#">译 > Bear Blog 宣告</a></li>
+            </ul>
+
+            <!-- Bagian: Pin -->
+            <h2 class="section-title">📌 Pin</h2>
+            <ul>
+                <li><a href="#">个人向的中文文案排版指北</a></li>
+                <li><a href="#">我的 Rime 输入法配置方案</a></li>
+                <li><a href="#">NuPhy Air75 V2 使用指南</a></li>
+            </ul>
+
+            <!-- Bagian: Explore -->
+            <h2 class="section-title">🌲 Explore</h2>
+            <ul>
+                <li><a href="#">X/Twitter</a></li>
+                <li><a href="#">GitHub</a></li>
+                <li><a href="#">Jike</a></li>
+            </ul>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            Subscribe via <a href="#">RSS</a> or just <a href="#">say hello</a>.<br>
+            Made with <a href="#">Hugo Bear Neo</a>.<br>
+            Copyright © 2023-2025, Rokcso. Powered by <a href="#">123Tool</a>. 🗺️ <a href="#">Sitemap</a>.
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+```
