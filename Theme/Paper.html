@@ -1,0 +1,240 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lee | Hugo Paper Clone</title>
+    <!-- Google Fonts: Inter untuk tampilan minimalis dan bersih -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            /* Latar belakang krem hangat khas Paper theme */
+            --bg-color: #faf9f6;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent-orange: #d97706; /* Untuk label Featured */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container-custom {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Navigasi Atas */
+        .brand-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: opacity 0.2s;
+        }
+
+        .nav-link:hover {
+            opacity: 0.6;
+        }
+
+        /* Bagian Profil/Header */
+        .avatar-circle {
+            width: 64px;
+            height: 64px;
+            background-color: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* List Postingan */
+        .featured-tag {
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+            transition: transform 0.2s ease;
+        }
+
+        .post-title:hover {
+            transform: translateX(4px);
+        }
+
+        .post-date {
+            font-size: 0.75rem;
+            color: #999;
+            font-weight: 500;
+        }
+
+        /* Tombol Halaman Berikutnya */
+        .btn-next {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-next:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer-text {
+            font-size: 0.7rem;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Ikon Sosial */
+        .social-icon {
+            color: var(--text-primary);
+            transition: opacity 0.2s;
+        }
+        .social-icon:hover { opacity: 0.5; }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .nav-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container-custom">
+        <!-- Header & Navigasi -->
+        <header class="flex justify-between items-center mb-16">
+            <div class="brand-text">Paper 🌕</div>
+            <nav class="nav-right flex items-center gap-6">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+                <div class="flex items-center gap-4 ml-2 border-l pl-6 border-gray-200">
+                    <!-- X / Twitter -->
+                    <a href="#" class="social-icon">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <!-- Github -->
+                    <a href="#" class="social-icon">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" class="social-icon">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Profil Section -->
+        <section class="flex items-center gap-6 mb-20">
+            <div class="avatar-circle">
+                <!-- Lightning SVG Logo -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold">Lee</h1>
+                <p class="text-sm text-gray-500 font-medium">Discover fresh context</p>
+            </div>
+        </section>
+
+        <!-- Post List -->
+        <main class="space-y-12">
+            <!-- Item 1 -->
+            <article>
+                <span class="featured-tag">Featured</span>
+                <a href="#" class="post-title">Placeholder Text</a>
+                <span class="post-date">Mar 9, 2019</span>
+            </article>
+
+            <!-- Item 2 -->
+            <article>
+                <a href="#" class="post-title">Markdown Syntax Guide</a>
+                <span class="post-date">Mar 11, 2019</span>
+            </article>
+
+            <!-- Item 3 -->
+            <article>
+                <a href="#" class="post-title">Rich Content</a>
+                <span class="post-date">Mar 10, 2019</span>
+            </article>
+        </main>
+
+        <!-- Pagination -->
+        <section class="mt-20 flex justify-end">
+            <a href="#" class="btn-next">
+                Next Page 
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-32 border-t border-gray-100 pt-8 flex justify-between items-center">
+            <div class="footer-text">© 2024 Paper</div>
+            <div class="footer-text">
+                POWERED BY <a href="#" class="hover:text-black">HUGO</a> &nbsp; <span class="opacity-20">|</span> &nbsp; <a href="#" class="hover:text-black">HUGO-PAPER</a>
+            </div>
+        </footer>
+
+        <!-- 123Tool Credit -->
+        <div class="mt-8 text-center text-[10px] uppercase tracking-widest font-bold opacity-30">
+            Powered by 123Tool
+        </div>
+    </div>
+
+    <script>
+        console.log("Hugo Paper Clone Initialized.");
+        // Logika sederhana untuk simulasi interaksi
+        document.querySelectorAll('.post-title').forEach(title => {
+            title.addEventListener('mouseenter', () => {
+                console.log("Hovering: " + title.innerText);
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
