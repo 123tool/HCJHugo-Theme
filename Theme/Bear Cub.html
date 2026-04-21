@@ -1,0 +1,177 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear Cub | Hugo Theme Clone</title>
+    <!-- Menggunakan font Inter untuk tampilan yang modern namun tetap fungsional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Definisi variabel warna sesuai dengan tema Bear Cub */
+        :root {
+            --bg-color: #1c1e26;
+            --text-color: #d5d5d6;
+            --link-color: #80cbc4;
+            --blockquote-border: #444b6a;
+            --heading-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Navigasi */
+        header {
+            margin-bottom: 40px;
+        }
+
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            color: var(--link-color);
+            text-decoration: underline;
+            margin-right: 15px;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Tipografi Konten */
+        h1 {
+            color: var(--heading-color);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 30px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--heading-color);
+            font-weight: 700;
+        }
+
+        /* Blockquote Styling */
+        blockquote {
+            border-left: 3px solid var(--blockquote-border);
+            margin: 30px 0;
+            padding: 10px 20px;
+            font-style: italic;
+            color: #a9b1d6;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            font-size: 0.9rem;
+            color: var(--link-color);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #565f89;
+        }
+
+        .flag-icon {
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Bagian Header & Navigasi -->
+        <header>
+            <a href="#" class="site-title">Bear Cub</a>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Blog</a>
+                <a href="#">Email</a>
+                <a href="#">RSS</a>
+                <a href="#">pt-BR <span class="flag-icon">🇧🇷</span></a>
+            </nav>
+        </header>
+
+        <!-- Konten Utama -->
+        <main>
+            <h1>ʕง •ᴥ•ʔง Bear Cub</h1>
+
+            <p>
+                Situs web saat ini seringkali membengkak (bloated), lambat, dan penuh dengan skrip, iklan, serta pelacak. Hal ini menjadi begitu umum sehingga kita kehilangan perspektif, sampai pada titik di mana kita menganggap halaman web berukuran multi-megabita adalah hal yang normal.
+            </p>
+
+            <blockquote>
+                Internet telah menjadi kekacauan yang membengkak. Pustaka JavaScript yang sangat besar, kueri sisi klien yang tak terhitung jumlahnya, dan kerangka kerja frontend yang terlalu kompleks adalah hal yang lumrah saat ini.
+                <cite>— <a href="#">Kev Quirk</a></cite>
+            </blockquote>
+
+            <p>
+                Mari kita ubah ini, satu situs web pada satu waktu! <strong>Bear Cub</strong> adalah tema <strong>Hugo</strong> berdasarkan <strong>Hugo Bear</strong> yang memperhatikan kecepatan dan optimalisasi, sehingga Anda dapat fokus menulis konten yang baik.
+            </p>
+
+            <p>
+                Ini gratis, multibahasa, dioptimalkan untuk mesin pencari, tanpa embel-embel, responsif, ringan, dan cepat. Sangat cepat.
+            </p>
+
+            <p>
+                Jika dibandingkan dengan pendahulunya, <strong>Bear Cub</strong> memiliki beberapa peningkatan <a href="#">privasi</a> dan <a href="#">aksesibilitas</a>. Ini juga kompatibel dengan standar <a href="#">keamanan</a> modern, sehingga pengguna Anda tidak perlu khawatir saat menjelajahi situs web Anda.
+            </p>
+
+            <p>Dibuat dengan 💟 oleh <a href="#">Caio Lente</a>.</p>
+        </main>
+
+        <!-- Bagian Footer -->
+        <footer>
+            <p>John Doe (CC BY 4.0) | Made with <a href="#">Bear Cub</a></p>
+            <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.6;">Powered by 123Tool</p>
+        </footer>
+    </div>
+
+    <script>
+        // Logika sederhana untuk memastikan tema dimuat dengan benar
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("ʕง •ᴥ•ʔง Bear Cub Theme Loaded Successfully.");
+        });
+    </script>
+</body>
+</html>
+
+```
