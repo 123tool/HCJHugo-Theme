@@ -1,0 +1,226 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anubis2 - Theme Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Dasar */
+        body {
+            /* Meniru latar belakang gradien pastel yang ada di gambar presentasi */
+            background: linear-gradient(135deg, #eaddf8 0%, #fef3e7 50%, #fbe4d8 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container Putih Utama (Jendela Web) */
+        .app-window {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 12px;
+            /* Efek drop shadow lembut seperti di gambar */
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1), 0 10px 20px -5px rgba(0,0,0,0.04);
+            padding: 3rem 4rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Ikon Header */
+        .header-icon {
+            width: 20px;
+            height: 20px;
+            color: #4b5563; /* text-gray-600 */
+            cursor: pointer;
+            transition: color 0.2s;
+            stroke-width: 1.5;
+        }
+        .header-icon:hover {
+            color: #000000;
+        }
+
+        /* Menu Navigasi (Pill) */
+        .nav-pill {
+            background-color: #f7f7f9;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 0.85rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .nav-pill a {
+            color: #4b5563;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-pill a:hover {
+            color: #000000;
+        }
+
+        /* Kartu Artikel */
+        .post-card {
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .post-card:hover {
+            border-color: #e5e7eb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        /* Tautan di dalam teks */
+        .content-link {
+            color: #64748b; /* Muted blue/slate */
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .content-link:hover {
+            color: #0f172a;
+            text-decoration: underline;
+        }
+
+        /* Responsive padding untuk layar kecil */
+        @media (max-width: 640px) {
+            body { padding: 0; background: #ffffff; }
+            .app-window { padding: 1.5rem; box-shadow: none; border-radius: 0; }
+            .nav-pill { gap: 1rem; flex-wrap: wrap; }
+            .post-card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Jendela Putih Utama -->
+    <div class="app-window">
+        
+        <!-- Header (Kiri Atas: Judul & Ikon) -->
+        <header class="flex items-center gap-5 mb-8">
+            <h1 class="text-xl font-bold text-gray-900 tracking-tight">Anubis2</h1>
+            
+            <div class="flex items-center gap-3">
+                <!-- Sun / Theme Icon -->
+                <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line>
+                </svg>
+                <!-- Document / Doc Icon -->
+                <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <!-- GitHub Icon -->
+                <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <!-- RSS Icon -->
+                <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 11a9 9 0 0 1 9 9"></path>
+                    <path d="M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Menu Navigasi (Pill) -->
+        <nav class="nav-pill">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Tags</a>
+            <a href="#">Archive</a>
+        </nav>
+
+        <!-- Daftar Artikel (Cards) -->
+        <main class="flex flex-col gap-6">
+            
+            <!-- Post 1 -->
+            <article class="post-card">
+                <!-- Title Row -->
+                <div class="flex items-baseline flex-wrap gap-3 mb-4">
+                    <h2 class="text-[1.4rem] font-bold text-gray-900 leading-tight">
+                        <a href="#" class="hover:underline decoration-gray-400 decoration-1 text-underline-offset-4">Markdown Syntax Guide 🌟</a>
+                    </h2>
+                    <span class="text-[0.7rem] font-semibold text-gray-500 tracking-wider">EN | PL</span>
+                </div>
+                
+                <!-- Excerpt -->
+                <p class="text-[0.95rem] text-gray-700 leading-relaxed mb-6">
+                    This article offers a sample of basic Markdown syntax that can be used in <a href="#" class="content-link">Hugo</a> content files, also it shows whether basic <a href="#" class="content-link">HTML</a> elements are decorated with <a href="#" class="content-link">CSS</a> in a Hugo theme.
+                </p>
+
+                <!-- Meta (Date & Tags) -->
+                <div class="flex flex-col gap-1.5 text-[0.8rem] text-gray-400">
+                    <time>2019-03-11</time>
+                    <div class="flex flex-wrap gap-2 gap-y-1">
+                        <a href="#" class="hover:text-gray-600">themes</a>
+                        <a href="#" class="hover:text-gray-600">syntax</a>
+                        <a href="#" class="hover:text-gray-600">#markdown</a>
+                        <a href="#" class="hover:text-gray-600">#css</a>
+                        <a href="#" class="hover:text-gray-600">#html</a>
+                        <a href="#" class="hover:text-gray-600">#themes</a>
+                        <a href="#" class="hover:text-gray-600">@Junyi-99</a>
+                        <a href="#" class="hover:text-gray-600">@hugo</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="post-card">
+                <!-- Title Row -->
+                <div class="flex items-baseline flex-wrap gap-3 mb-4">
+                    <h2 class="text-[1.4rem] font-bold text-gray-900 leading-tight">
+                        <a href="#" class="hover:underline decoration-gray-400 decoration-1 text-underline-offset-4">Rich Content</a>
+                    </h2>
+                    <span class="text-[0.7rem] font-semibold text-gray-500 tracking-wider">EN | PL</span>
+                </div>
+                
+                <!-- Excerpt -->
+                <p class="text-[0.95rem] text-gray-700 leading-relaxed mb-6">
+                    Hugo ships with several <a href="#" class="content-link">Built-in Shortcodes</a> for rich content, along with a <a href="#" class="content-link">Privacy Config</a> and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
+                </p>
+
+                <!-- Meta (Date & Tags) -->
+                <div class="flex flex-col gap-1.5 text-[0.8rem] text-gray-400">
+                    <time>2019-03-10</time>
+                    <div class="flex flex-wrap gap-2 gap-y-1">
+                        <a href="#" class="hover:text-gray-600">#shortcodes</a>
+                        <a href="#" class="hover:text-gray-600">#privacy</a>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-[0.8rem] text-gray-400">
+            Powered by <a href="#" class="text-gray-500 hover:text-gray-800 font-medium transition-colors">123Tool</a>.
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+```
