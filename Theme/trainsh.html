@@ -1,0 +1,172 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hugo-trainsh - Retro Theme</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Pixel 8-bit dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Konfigurasi Tema Retro NES */
+        :root {
+            --nes-bg: #0a1c76;       /* Biru pekat klasik NES */
+            --nes-text: #ffffff;     /* Putih murni */
+            --nes-accent: #eab06a;   /* Oranye/kuning persik untuk link & highlight */
+            --nes-shadow: #000000;   /* Bayangan hitam pekat */
+        }
+
+        body {
+            background-color: var(--nes-bg);
+            color: var(--nes-text);
+            /* Paragraf biasa menggunakan font sans-serif agar tetap mudah dibaca seperti di demo */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Kelas khusus untuk Font Pixel */
+        .font-pixel {
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.5;
+        }
+
+        /* Efek Hard Shadow khas 8-bit */
+        .pixel-shadow {
+            text-shadow: 2px 2px 0px var(--nes-shadow);
+        }
+
+        .box-shadow {
+            box-shadow: 4px 4px 0px 0px var(--nes-shadow);
+        }
+        
+        .box-shadow-sm {
+            box-shadow: 2px 2px 0px 0px var(--nes-shadow);
+        }
+
+        /* Link Kustom */
+        .pixel-link {
+            color: var(--nes-accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .pixel-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Header Box */
+        .retro-header {
+            border: 2px solid var(--nes-text);
+            background-color: var(--nes-bg);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .retro-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0;
+            }
+        }
+
+        /* List dengan warna custom */
+        .retro-list {
+            list-style-type: disc;
+            padding-left: 2.5rem;
+            margin-top: 1rem;
+        }
+        
+        .retro-list li {
+            color: var(--nes-text); /* Bullet warna putih */
+            margin-bottom: 0.75rem;
+        }
+        
+        .retro-list li a {
+            color: var(--nes-accent); /* Teks link warna oranye */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-[900px] w-full mx-auto flex-grow flex flex-col">
+        
+        <!-- Header Retro (Kotak bergaris putih dengan bayangan) -->
+        <header class="retro-header box-shadow">
+            
+            <!-- Judul Kiri -->
+            <a href="#" class="font-pixel text-[1.1rem] md:text-[1.3rem] text-white pixel-shadow hover:opacity-80 transition-opacity">
+                My New Hugo Site
+            </a>
+
+            <!-- Navigasi Kanan -->
+            <div class="flex items-center gap-6">
+                <nav class="flex gap-4 md:gap-6 font-pixel text-[0.65rem] md:text-[0.75rem] pixel-shadow">
+                    <a href="#" class="pixel-link">Home</a>
+                    <a href="#" class="pixel-link">Blog</a>
+                    <a href="#" class="pixel-link">Tags</a>
+                </nav>
+                
+                <!-- Ikon Gamepad -->
+                <button class="border-2 border-white p-1.5 box-shadow-sm bg-transparent hover:bg-white/10 transition-colors cursor-pointer" aria-label="Toggle Theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white pixel-shadow">
+                        <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+                        <path d="M6 12h4"></path>
+                        <path d="M8 10v4"></path>
+                        <line x1="15" y1="13" x2="15.01" y2="13"></line>
+                        <line x1="18" y1="11" x2="18.01" y2="11"></line>
+                    </svg>
+                </button>
+            </div>
+            
+        </header>
+
+        <!-- Konten Utama -->
+        <main>
+            <!-- H1 -->
+            <h1 class="font-pixel text-[1.5rem] md:text-[1.8rem] text-white pixel-shadow mb-6">
+                hugo-trainsh
+            </h1>
+
+            <!-- Paragraf Deskripsi -->
+            <p class="text-[1.05rem] leading-relaxed mb-12 max-w-3xl">
+                A minimal, multilingual Hugo theme — <strong class="text-[#eab06a] font-semibold">defaults to NES/FC retro pixel style.</strong> Click the gamepad icon in the header to switch between Retro, Light, and Dark modes.
+            </p>
+
+            <!-- H2 -->
+            <h2 class="font-pixel text-[1.3rem] md:text-[1.5rem] text-white pixel-shadow mb-6">
+                Recent posts
+            </h2>
+
+            <!-- Daftar Artikel -->
+            <ul class="retro-list text-[1.05rem]">
+                <li><a href="#" class="pixel-link">Theme Guide</a></li>
+                <li><a href="#" class="pixel-link">Code Samples</a></li>
+                <li><a href="#" class="pixel-link">Images and Lightbox</a></li>
+                <li><a href="#" class="pixel-link">Mermaid and Math Demo</a></li>
+                <li><a href="#" class="pixel-link">Archive and Tags</a></li>
+            </ul>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto pt-16 pb-4 font-pixel text-[0.6rem] text-center text-white/60 pixel-shadow">
+            Powered by <a href="#" class="text-[#eab06a] hover:underline">123Tool</a>. Theme <a href="#" class="hover:underline">trainsh</a>.
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+```
