@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API Guidelines - Hugo Dead Simple</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Warna Dark Mode Murni ala Dead Simple */
+        :root {
+            --bg-color: #121212;        /* Background hitam pekat */
+            --text-main: #e0e0e0;       /* Putih agak abu-abu agar tidak silau */
+            --text-muted: #888888;      /* Abu-abu redup untuk TOC & meta */
+            --link-color: #799af0;      /* Biru terang (muted blue) untuk link */
+            --code-bg: #222222;         /* Latar inline code */
+            --pre-bg: #1a1a1a;          /* Latar block code */
+            --border-color: #333333;    /* Garis tabel */
+            --table-header: #2a2a2a;    /* Header tabel */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigasi Top */
+        .top-nav a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: transparent;
+            transition: text-decoration-color 0.2s;
+            margin-right: 1rem;
+        }
+        .top-nav a:hover {
+            text-decoration-color: var(--link-color);
+        }
+
+        /* Tautan di dalam artikel */
+        .content-link {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        .content-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* Sidebar TOC */
+        .sidebar {
+            width: 240px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+            /* Scrollbar kustom untuk TOC */
+            scrollbar-width: thin;
+            scrollbar-color: #333 transparent;
+        }
+        .sidebar::-webkit-scrollbar { width: 6px; }
+        .sidebar::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .toc-list li {
+            margin-bottom: 0.35rem;
+            cursor: pointer;
+        }
+        .toc-list li:hover {
+            color: #cccccc;
+        }
+        /* Indentasi sub-menu di TOC */
+        .toc-sublist {
+            padding-left: 1rem;
+            margin-top: 0.35rem;
+            margin-bottom: 0.5rem;
+        }
+        .toc-sublist li {
+            font-size: 0.8rem;
+        }
+
+        /* Typography Konten */
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        p {
+            margin-bottom: 1.25rem;
+            color: #d1d5db;
+        }
+
+        /* Styling Inline Code */
+        code.inline-code {
+            background-color: var(--code-bg);
+            color: #e5e5e5;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.85em;
+        }
+
+        /* Styling Tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: var(--table-header);
+            font-weight: 600;
+            color: #ffffff;
+        }
+        td {
+            background-color: #1a1a1a;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Styling Block Code dengan tombol Copy */
+        .code-block-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+            background-color: var(--pre-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #2a2a2a;
+            color: #a0a0a0;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            border-bottom-left-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        pre {
+            margin: 0;
+            padding: 1.25rem;
+            overflow-x: auto;
+            color: #d1d5db;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Bullet List */
+        .content-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        .content-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="max-w-[1200px] mx-auto flex gap-8 px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- ================= SIDEBAR TOC (KIRI) ================= -->
+        <aside class="sidebar hidden md:block">
+            <ul class="toc-list">
+                <li>1. Resource-oriented design</li>
+                <li>2. Naming and standards
+                    <ul class="toc-list toc-sublist">
+                        <li>Canonical identifier</li>
+                        <li>Time</li>
+                        <li>Durations</li>
+                        <li>Intervals</li>
+                    </ul>
+                </li>
+                <li>3. HTTP Methods</li>
+                <li>4. Headers
+                    <ul class="toc-list toc-sublist">
+                        <li>Standard request headers</li>
+                        <li>Standard response headers</li>
+                    </ul>
+                </li>
+                <li>5. Status codes</li>
+                <li>6. JSON body
+                    <ul class="toc-list toc-sublist">
+                        <li>Success</li>
+                        <li>Error</li>
+                    </ul>
+                </li>
+                <li>7. Common patterns
+                    <ul class="toc-list toc-sublist">
+                        <li>Pagination</li>
+                        <li>Sorting</li>
+                        <li>Filtering</li>
+                        <li>Long Running Operations</li>
+                        <li>Access Sub Collections</li>
+                        <li>ETags</li>
+                        <li>Throttling</li>
+                    </ul>
+                </li>
+                <li>Notes</li>
+            </ul>
+        </aside>
+
+        <!-- ================= MAIN CONTENT (KANAN) ================= -->
+        <main class="flex-1 max-w-3xl w-full">
+            
+            <!-- Top Nav -->
+            <nav class="top-nav mb-6 text-[0.95rem]">
+                <a href="#">Home</a>
+                <a href="#">Tags</a>
+            </nav>
+
+            <!-- Article Header -->
+            <header class="mb-8">
+                <h1>REST API Guidelines 📜</h1>
+                <div class="text-[0.85rem] text-gray-400 mt-2">
+                    Aug 11, 2021 &nbsp;&nbsp; m. Feb 18, 2024 &nbsp;&nbsp; <a href="#" class="content-link">#rest</a>
+                </div>
+            </header>
+
+            <!-- Article Content -->
+            <div class="article-body">
+                <p>
+                    This is a shortened merge of <a href="#" class="content-link">Google's API design guide</a> and <a href="#" class="content-link">Microsoft REST API Guidelines</a>.
+                </p>
+                <p>
+                    To write OpenAPI schema <a href="#" class="content-link">swagger</a> documentation is useful. To quickly iterate on a design, <a href="#" class="content-link">semantic versioning</a> should be used.<br>
+                    To generate human-readable diff of different versions <a href="#" class="content-link">openapi-diff</a> can be useful.
+                </p>
+
+                <h2>1. Resource-oriented design</h2>
+                
+                <p>In general URL paths should follow this scheme:</p>
+
+                <!-- Responsive Table -->
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>API Service Name</th>
+                                <th>Collection ID</th>
+                                <th>Resource ID</th>
+                                <th>Collection ID</th>
+                                <th>Resource ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>//storage.googleapis.com</td>
+                                <td>/buckets</td>
+                                <td>/bucket-id</td>
+                                <td>/objects</td>
+                                <td>/object-id</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>A storage service has a collection of <em>buckets</em>, where each bucket has a collection of <em>objects</em>.</p>
+                
+                <p>Another example:</p>
+
+                <!-- Code Block with Copy Button -->
+                <div class="code-block-wrapper">
+                    <button class="copy-btn">copy</button>
+<pre><code>https://api.contoso.com/v1.0/people/7011042402/inbox</code></pre>
+                </div>
+
+                <p>Resource names should be <code class="inline-code">noun</code> and not verb. Resource names should be <code class="inline-code">plural</code>.</p>
+
+                <h2>2. Naming and standards</h2>
+
+                <p>
+                    Microsoft mostly uses <code class="inline-code">camelCase</code>, Google mostly uses <code class="inline-code">snake_case</code> - this guide will be using <strong class="text-white">camelCase</strong>.
+                </p>
+
+                <ul class="content-list">
+                    <li>Acronyms should follow the casing conventions as though they were regular words (e.g. <code class="inline-code">Id</code>).</li>
+                    <li>All identifiers including namespaces, entityTypes, entitySets, properties, actions, functions and enumeration values should use <code class="inline-code">lowerCamelCase</code>.</li>
+                    <li>HTTP headers are the exception and should use standard HTTP convention of Capitalized-Hyphenated-Terms.</li>
+                    <li>Full words should be preferred (e.g. <code class="inline-code">message</code> instead of <code class="inline-code">msg</code>).</li>
+                </ul>
+
+                <p>Common property names should be used where applicable:</p>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-12 pt-6 border-t border-gray-800 text-sm text-gray-500 flex justify-between">
+                <span>Hugo Dead Simple clone.</span>
+                <span>Powered by <a href="#" class="content-link font-medium">123Tool</a>.</span>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
+
+```
