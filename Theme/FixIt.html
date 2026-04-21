@@ -1,0 +1,239 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixIt | Tema Hugo yang Bersih dan Canggih</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        fixitPink: '#ea4aaa',
+                        fixitGreen: '#2ec4b6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigasi Link */
+        .nav-link {
+            @apply flex items-center gap-1.5 text-gray-600 dark:text-gray-300 hover:text-fixitPink transition-colors text-sm font-medium;
+        }
+
+        /* Logo Heksagon */
+        .hexagon-container {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            margin: 0 auto;
+            filter: drop-shadow(0 10px 15px rgba(234, 74, 170, 0.3));
+        }
+
+        /* Kartu Fitur dengan Border Gradien */
+        .gradient-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2px; /* Tebal border */
+            background: linear-gradient(135deg, #4ade80, #f87171);
+            overflow: hidden;
+        }
+
+        .dark .gradient-card {
+            background: linear-gradient(135deg, #10b981, #ef4444);
+        }
+
+        .gradient-card-inner {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .dark .gradient-card-inner {
+            background: #1a1a1a;
+        }
+
+        /* Stepper List */
+        .step-item {
+            @apply flex items-center gap-3 py-2 text-gray-700 dark:text-gray-300;
+        }
+
+        .step-dot {
+            @apply w-2.5 h-2.5 rounded-full border-2 border-red-400;
+        }
+
+        /* Tombol Quick Start */
+        .btn-quickstart {
+            @apply bg-[#48c78e] hover:bg-[#3eb37e] text-white px-8 py-2.5 rounded-md font-bold text-sm flex items-center gap-2 transition-all shadow-md;
+        }
+
+        /* Footer */
+        footer {
+            @apply mt-20 pb-10 text-center text-xs text-gray-500 space-y-2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-[#111] dark:text-gray-100 antialiased">
+
+    <!-- Header / Navigasi -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Logo & Versi -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-fixitPink rounded-md flex items-center justify-center text-white p-1 shadow-md">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span class="font-bold text-lg tracking-tight">FixIt</span>
+                <span class="text-[10px] bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-gray-500 font-bold ml-1">v0.3.9</span>
+            </div>
+
+            <!-- Menu Navigasi -->
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#" class="nav-link"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> Docs <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+                <a href="#" class="nav-link"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Components</a>
+                <a href="#" class="nav-link"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg> Showcase</a>
+                <a href="#" class="nav-link"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg> Community</a>
+            </nav>
+
+            <!-- Aksi Kanan -->
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-gray-500 hover:text-fixitPink"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+                <button id="themeToggle" class="p-2 text-gray-500 hover:text-fixitPink"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg></button>
+                <button class="p-2 text-gray-500 hover:text-fixitPink"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 0 1 6.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 9.19 15.378 6 18.084"/></svg></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Hero -->
+    <main class="max-w-5xl mx-auto px-6 pt-16 flex flex-col items-center">
+        <!-- Logo Heksagon FixIt -->
+        <div class="hexagon-container mb-6">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+                <path d="M50 5 L90 27.5 V72.5 L50 95 L10 72.5 V27.5 Z" fill="#ea4aaa" />
+                <circle cx="50" cy="50" r="28" fill="white" />
+                <!-- Icon Serangga/Bug di dalam -->
+                <path d="M50 35 L55 45 L65 45 L58 52 L62 62 L50 55 L38 62 L42 52 L35 45 L45 45 Z" fill="#ea4aaa" stroke="#ea4aaa" stroke-width="2" />
+                <!-- Coretan dilarang (FixIt icon) -->
+                <line x1="35" y1="35" x2="65" y2="65" stroke="#ea4aaa" stroke-width="5" />
+            </svg>
+        </div>
+
+        <h1 class="text-3xl font-bold mb-2">FixIt</h1>
+        <p class="text-gray-500 dark:text-gray-400 font-medium mb-6">A Clean, Elegant but Advanced Hugo Theme</p>
+
+        <!-- Link Sosial -->
+        <div class="flex items-center gap-5 text-gray-400 mb-12">
+            <a href="#" class="hover:text-fixitPink transition-transform hover:-translate-y-1"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.466-1.332-5.466-5.931 0-1.311.465-2.381 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.805 5.625-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+            <a href="#" class="hover:text-fixitPink transition-transform hover:-translate-y-1"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="hover:text-fixitPink transition-transform hover:-translate-y-1"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.139l-.967-3.061c-.026-.085-.033-.132-.033-.132s-.212-.894-.172-1.103c.176-.448 1.142-1.578 1.142-1.578l.487-.545s-.312-.118-.446-.61c-.023-.085-.02-.153-.02-.225 0-.353.163-.7.439-.939a1.13 1.13 0 0 1 1.021-.245l.502.138s.163-.526.473-.921c.972-1.242 2.912-2.121 4.817-2.121 3.403 0 6.162 2.759 6.162 6.162s-2.759 6.162-6.162 6.162c-1.1 0-2.139-.29-3.042-.797l-.748 2.368c1.173.605 2.493.948 3.895.948 4.714 0 8.536-3.822 8.536-8.536S16.731 3.451 12.017 3.451z"/></svg></a>
+            <a href="#" class="hover:text-fixitPink transition-transform hover:-translate-y-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></a>
+            <a href="#" class="hover:text-fixitPink transition-transform hover:-translate-y-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg></a>
+            <a href="#" class="hover:text-fixitPink transition-transform hover:-translate-y-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+            <span class="bg-black text-white text-[8px] font-bold px-1 py-0.5 rounded leading-none">DEMO</span>
+        </div>
+
+        <!-- Kartu Fitur (Gaya Gradient Showcase) -->
+        <div class="w-full max-w-3xl gradient-card mb-12">
+            <div class="gradient-card-inner">
+                <!-- Sisi Kiri: Daftar -->
+                <div class="flex flex-col gap-2">
+                    <div class="step-item">
+                        <div class="step-dot"></div>
+                        <span class="font-medium text-sm">Installation</span>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-dot"></div>
+                        <span class="font-medium text-sm">Getting Started</span>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-dot"></div>
+                        <span class="font-medium text-sm">Content Management</span>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-dot"></div>
+                        <span class="font-medium text-sm">Advanced Usage</span>
+                    </div>
+                </div>
+
+                <!-- Sisi Kanan: Mockup Device (Visual saja) -->
+                <div class="hidden md:flex relative items-end h-40 w-1/2">
+                    <!-- Monitor -->
+                    <div class="absolute right-0 bottom-0 w-48 h-32 bg-gray-200 dark:bg-gray-800 rounded-md border-2 border-gray-300 dark:border-gray-700 p-2 shadow-lg">
+                        <div class="w-full h-full bg-white dark:bg-black rounded-sm flex flex-col gap-1 p-1">
+                            <div class="w-full h-2 bg-gray-100 dark:bg-gray-900"></div>
+                            <div class="flex gap-1">
+                                <div class="w-1/3 h-16 bg-gray-50 dark:bg-gray-900"></div>
+                                <div class="w-2/3 h-16 bg-gray-50 dark:bg-gray-900"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tablet -->
+                    <div class="absolute right-32 bottom-2 w-24 h-36 bg-gray-100 dark:bg-gray-700 rounded-md border-2 border-gray-300 dark:border-gray-600 p-1 shadow-md">
+                         <div class="w-full h-full bg-white dark:bg-black rounded-sm"></div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="absolute right-12 bottom-4 w-12 h-20 bg-gray-200 dark:bg-gray-600 rounded-md border border-gray-400 p-0.5 shadow-sm">
+                         <div class="w-full h-full bg-white dark:bg-black rounded-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol CTA -->
+        <button class="btn-quickstart">
+            Quick Start <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Powered by <span class="text-fixitPink">Hugo</span> | Theme - <span class="text-fixitPink font-bold">FixIt</span></p>
+        <p>© 2021 - 2024 Lruihao | CC BY-NC-SA 4.0</p>
+        <div class="flex items-center justify-center gap-1.5 text-[10px] text-gray-400">
+            <svg class="w-3 h-3 text-red-500 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>966, 22:22:15</span>
+        </div>
+        <p class="powered-by">Powered by 123Tool</p>
+    </footer>
+
+    <script>
+        // Logika Toggle Tema
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Cek preferensi tersimpan
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+        }
+
+        console.log("FixIt Theme Clone Ready.");
+    </script>
+</body>
+</html>
+
+```
