@@ -1,0 +1,340 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuAPI Clone | API Documentation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --sidebar-bg: #2d3e50;
+            --content-bg: #ffffff;
+            --code-bg: #1e2227;
+            --code-header-bg: #15181d;
+            --accent-blue: #3ba7e9;
+            --text-dark: #333333;
+            --text-muted: #666666;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Layout Grid Utama */
+        .page-wrapper {
+            display: grid;
+            grid-template-columns: 230px 1fr 45%;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Kiri */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            position: fixed;
+            width: 230px;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        /* Kolom Tengah (Dokumentasi) */
+        .content-column {
+            background-color: var(--content-bg);
+            padding: 40px 60px;
+            color: var(--text-dark);
+            grid-column: 2;
+        }
+
+        /* Kolom Kanan (Blok Kode) */
+        .code-column {
+            background-color: var(--code-bg);
+            color: #abb2bf;
+            position: relative;
+            grid-column: 3;
+        }
+
+        .code-header {
+            background-color: var(--code-header-bg);
+            padding: 0 20px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .lang-tab {
+            padding: 0 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #636d83;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .lang-tab:hover { color: #ffffff; }
+        .lang-tab.active { color: var(--accent-blue); border-bottom: 2px solid var(--accent-blue); }
+
+        /* Typography & Content */
+        h1, h2 {
+            font-weight: 700;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-top: 60px;
+            margin-bottom: 25px;
+        }
+
+        h1:first-child { margin-top: 0; }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .alert-info {
+            background-color: #d9edf7;
+            border-left: 4px solid #31708f;
+            padding: 15px;
+            font-size: 0.85rem;
+            margin: 20px 0;
+        }
+
+        /* Code Snippets */
+        pre {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.85rem;
+            padding: 20px;
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        .code-block-container {
+            display: none;
+        }
+
+        .code-block-container.active {
+            display: block;
+        }
+
+        /* Syntax Highlighting Mock */
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .comment { color: #5c6370; font-style: italic; }
+        .func { color: #61afef; }
+
+        /* Powered By */
+        .powered-by {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 0.7rem;
+            color: #7f8c8d;
+            z-index: 110;
+        }
+
+        /* Responsivitas */
+        @media (max-width: 1024px) {
+            .page-wrapper {
+                grid-template-columns: 200px 1fr;
+            }
+            .code-column {
+                display: none; /* Menyederhanakan untuk mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="powered-by">Powered by 123Tool</div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="p-6">
+            <div class="text-2xl font-bold tracking-tighter">DOCU<span class="text-blue-400">API</span></div>
+            <div class="text-[10px] text-gray-500 uppercase mt-1">POWERED BY HUGO</div>
+        </div>
+        
+        <div class="px-6 mb-6">
+            <div class="relative">
+                <input type="text" placeholder="Search" class="bg-black/20 border-none rounded py-1 px-8 w-full text-xs outline-none">
+                <svg class="absolute left-2 top-1.5 text-gray-500" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+        </div>
+
+        <nav>
+            <div class="nav-item active">Introduction</div>
+            <div class="nav-item">Authentication</div>
+            <div class="nav-item">Kittens</div>
+            <div class="nav-item">Errors</div>
+            
+            <div class="mt-8 px-6 text-[10px] uppercase text-gray-500 font-bold mb-2">Translation</div>
+            <div class="nav-item">Norsk</div>
+            
+            <div class="mt-8 px-6 text-[10px] text-gray-600">
+                Sign Up for a Developer Key<br>
+                Documentation Powered by DocuAPI<br>
+                Hugo Theme by bep
+            </div>
+            
+            <div class="mt-10 px-6">
+                <div class="bg-[#1e2227] p-3 rounded flex items-center gap-2">
+                    <img src="https://www.netlify.com/v3/img/components/netlify-color-bg.svg" width="20" alt="Netlify">
+                    <span class="text-[10px] font-bold">DEPLOYED BY<br>netlify</span>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="page-wrapper pl-[230px]">
+        
+        <!-- Kolom Tengah: Dokumentasi -->
+        <div class="content-column">
+            <section id="intro">
+                <h1 class="text-3xl">Introduction</h1>
+                <p>Selamat datang di Kittn API! Anda dapat menggunakan API kami untuk mengakses endpoint Kittn API, yang dapat memberikan informasi tentang berbagai kucing, anak kucing, dan ras di database kami.</p>
+                <p>Kami memiliki language bindings dalam Shell, Ruby, dan Python! Anda dapat melihat contoh kode di area gelap di sebelah kanan, dan Anda dapat mengganti bahasa pemrograman dari contoh tersebut dengan tab di pojok kanan atas.</p>
+                <p>Halaman dokumentasi API contoh ini dibuat dengan <strong>DocuAPI</strong>, tema dokumentasi multibahasa untuk static site generator <a href="#" class="text-blue-500">Hugo</a>.</p>
+            </section>
+
+            <section id="auth" class="mt-20">
+                <h1 class="text-3xl">Authentication</h1>
+                <p>Kittn menggunakan kunci API untuk memberikan akses ke API. Anda dapat mendaftarkan kunci Kittn API baru di <a href="#" class="text-blue-500">developer portal</a> kami.</p>
+                <p>Kittn mengharapkan kunci API disertakan dalam semua permintaan API ke server dalam header yang terlihat seperti berikut:</p>
+                <code class="block bg-gray-100 p-2 rounded text-xs font-mono">Authorization: meowmeowmeow</code>
+                
+                <div class="alert-info flex gap-3">
+                    <svg class="shrink-0" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    <span>Anda harus mengganti <code>meowmeowmeow</code> dengan kunci API pribadi Anda.</span>
+                </div>
+            </section>
+
+            <section id="kittens" class="mt-20">
+                <h1 class="text-3xl">Kittens</h1>
+                <h2 class="text-xl">Get All Kittens</h2>
+                <p>Endpoint ini mengambil semua kucing.</p>
+                <h3 class="font-bold text-sm uppercase mb-4 text-gray-500">HTTP Request</h3>
+                <code class="block bg-gray-100 p-2 rounded text-xs font-mono">GET http://example.com/api/kittens</code>
+            </section>
+        </div>
+
+        <!-- Kolom Kanan: Blok Kode -->
+        <div class="code-column">
+            <div class="code-header">
+                <div class="lang-tab active" data-lang="go">Go</div>
+                <div class="lang-tab" data-lang="shell">Shell</div>
+                <div class="lang-tab" data-lang="ruby">Ruby</div>
+                <div class="lang-tab" data-lang="python">Python</div>
+                <div class="lang-tab" data-lang="js">Javascript</div>
+            </div>
+
+            <!-- Kode untuk Introduction -->
+            <div class="p-5">
+                <div class="text-sm text-gray-500 italic mb-10">To authorize, use this code:</div>
+                
+                <div class="code-block-container active" data-lang="go">
+                    <pre><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"github.com/bep/kittn/auth"</span>
+
+<span class="keyword">func</span> <span class="func">main</span>() {
+    api := auth.<span class="func">Authorize</span>(<span class="string">"meowmeowmeow"</span>)
+
+    <span class="comment">// Just to make it compile</span>
+    _ = api
+}</pre>
+                </div>
+
+                <div class="code-block-container" data-lang="shell">
+                    <pre><span class="comment"># With shell, you can just pass the correct header with each request</span>
+curl <span class="string">"api_endpoint_here"</span> \
+  -H <span class="string">"Authorization: meowmeowmeow"</span></pre>
+                </div>
+                
+                <div class="text-sm text-gray-500 mt-10">Pastikan untuk mengganti <code>meowmeowmeow</code> dengan kunci API Anda.</div>
+            </div>
+
+            <!-- Kode Kedua (Placeholder) -->
+            <div class="mt-20 border-t border-white/5">
+                <div class="code-block-container active" data-lang="go">
+                    <pre><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"github.com/bep/kittn/auth"</span>
+
+<span class="keyword">func</span> <span class="func">main</span>() {
+    api := auth.<span class="func">Authorize</span>(<span class="string">"meowmeowmeow"</span>)
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logika Perpindahan Bahasa (Tabs)
+        const tabs = document.querySelectorAll('.lang-tab');
+        const codeBlocks = document.querySelectorAll('.code-block-container');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetLang = tab.getAttribute('data-lang');
+
+                // Update tab aktif
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update blok kode yang tampil
+                codeBlocks.forEach(block => {
+                    if (block.getAttribute('data-lang') === targetLang) {
+                        block.classList.add('active');
+                    } else {
+                        block.classList.remove('active');
+                    }
+                });
+
+                console.log(`Switched to: ${targetLang}`);
+            });
+        });
+
+        // Simulasi Scroll Spying Sederhana (Optional)
+        window.addEventListener('scroll', () => {
+            // Logika untuk mengubah nav item aktif saat scroll bisa ditambah di sini
+        });
+    </script>
+</body>
+</html>
+
+```
