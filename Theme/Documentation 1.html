@@ -1,0 +1,226 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doks | Modern Documentation Theme</title>
+    <!-- Google Fonts: Inter untuk tampilan modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        doksPurple: '#6d28d9',
+                        doksPurpleHover: '#5b21b6',
+                        darkBg: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Pola Titik-titik Latar Belakang (Dot Pattern) */
+        .dot-pattern {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .dark .dot-pattern {
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+        }
+
+        /* Navbar glassmorphism */
+        header {
+            @apply sticky top-0 z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800;
+        }
+
+        .nav-link {
+            @apply text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-doksPurple dark:hover:text-white transition-colors;
+        }
+
+        /* Feature Card styling */
+        .feature-card {
+            @apply p-8 text-center transition-all duration-300;
+        }
+
+        .feature-title {
+            @apply text-xl font-bold mb-3 dark:text-white;
+        }
+
+        .feature-desc {
+            @apply text-sm text-gray-500 dark:text-gray-400 leading-relaxed;
+        }
+
+        /* Tombol Get Started */
+        .btn-primary {
+            @apply bg-doksPurple hover:bg-doksPurpleHover text-white px-8 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-purple-500/20;
+        }
+
+        .powered-by {
+            @apply fixed bottom-4 right-4 text-[10px] font-bold text-gray-300 dark:text-gray-700 uppercase tracking-widest pointer-events-none;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-darkBg dark:text-slate-100 antialiased">
+
+    <div class="powered-by">Powered by 123Tool</div>
+
+    <!-- Header / Navigasi -->
+    <header>
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
+                    Doks
+                </div>
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#" class="nav-link">Docs</a>
+                    <div class="relative group">
+                        <button class="nav-link flex items-center gap-1">
+                            Resources
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                    </div>
+                    <a href="#" class="nav-link">Blog</a>
+                    <a href="#" class="nav-link">About</a>
+                </nav>
+            </div>
+
+            <!-- Header Right Icons -->
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-slate-400 hover:text-doksPurple transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </button>
+                <button id="themeToggle" class="p-2 text-slate-400 hover:text-doksPurple transition-colors">
+                    <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg id="sunIcon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+                <a href="#" class="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="dot-pattern pt-16 pb-24 lg:pt-32 lg:pb-40 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Hero Section -->
+            <div class="text-center mb-24">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-8">
+                    Modern Documentation Theme
+                </h1>
+                <p class="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Build beautiful, high-performance documentation websites with Doks. Fast, flexible, and easy-to-use. Deploy anywhere.
+                </p>
+                
+                <div class="flex flex-col items-center gap-6">
+                    <button class="btn-primary">Get Started</button>
+                    <div class="text-xs text-gray-400 font-medium">
+                        Open-source. MIT Licensed. GitHub v1.0.0
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 pt-16">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <h3 class="feature-title">Secure by design</h3>
+                    <p class="feature-desc">
+                        Get A+ scores on Mozilla Observatory out of the box. Easily change the default Security Headers to suit your needs.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <h3 class="feature-title">Fast by default ⚡</h3>
+                    <p class="feature-desc">
+                        Get 100 scores on Google Lighthouse by default. Doks removes unused css, prefetches links, and lazy loads images.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <h3 class="feature-title">Search optimized</h3>
+                    <p class="feature-desc">
+                        Use sensible defaults for structured data, open graph, and Twitter cards. Or easily change the SEO settings to your liking.
+                    </p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <h3 class="feature-title">Full text search</h3>
+                    <p class="feature-desc">
+                        Search your Doks site with FlexSearch. Easily customize index settings and search options to your liking.
+                    </p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <h3 class="feature-title">Page layouts</h3>
+                    <p class="feature-desc">
+                        Build pages with a landing page, blog, or documentation layout. Add custom sections and components to suit your needs.
+                    </p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <h3 class="feature-title">Dark mode</h3>
+                    <p class="feature-desc">
+                        Switch to a low-light UI with the click of a button. Change colors with variables to match your branding.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Logika Toggle Tema (Light/Dark)
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+
+        function updateIcons() {
+            if (html.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcons();
+        });
+
+        // Inisialisasi tema berdasarkan sistem atau simpanan
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        updateIcons();
+
+        console.log("Doks Clone Initialized.");
+    </script>
+</body>
+</html>
+
+```
