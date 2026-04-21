@@ -1,0 +1,221 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YINYONG BLOG | YinYang Theme Clone</title>
+    <!-- Google Fonts: Menggunakan Zilla Slab untuk kesan literatur retro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        zilla: ['"Zilla Slab"', 'serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Gaya Logo Khusus (Retro Shadow) */
+        .logo-text {
+            font-family: 'Zilla Slab', serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: #000;
+            text-shadow: 2px 2px 0px #fff, 4px 4px 0px #000;
+            line-height: 1;
+        }
+
+        .dark .logo-text {
+            color: #fff;
+            text-shadow: 2px 2px 0px #000, 4px 4px 0px #fff;
+        }
+
+        /* Garis Pemisah Tipis */
+        .hr-sep {
+            border: 0;
+            border-top: 1px solid #000;
+            margin: 1.5rem 0;
+        }
+
+        .dark .hr-sep {
+            border-top: 1px solid #fff;
+        }
+
+        /* Tag Kategori */
+        .cat-tag {
+            border: 1px solid #000;
+            border-radius: 6px;
+            padding: 2px 12px;
+            font-size: 0.7rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .dark .cat-tag {
+            border-color: #fff;
+        }
+
+        /* Navigasi */
+        .nav-link {
+            font-family: 'Zilla Slab', serif;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout List Postingan */
+        .post-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 640px) {
+            .post-item {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+                margin-bottom: 1.5rem;
+            }
+            .cat-tag {
+                width: fit-content;
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body class="font-zilla dark:bg-zinc-900 dark:text-white">
+
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header Section -->
+        <header>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <h1 class="logo-text">YINYONG BLOG</h1>
+                    <p class="text-gray-500 dark:text-gray-400 italic text-sm mt-2">Example site for YinYang theme</p>
+                </div>
+                
+                <nav class="flex flex-col items-end gap-2">
+                    <div class="flex gap-4">
+                        <a href="#" class="nav-link">RSS</a>
+                        <a href="#" class="nav-link">Subscribe</a>
+                        <a href="#" class="nav-link">About</a>
+                    </div>
+                    <a href="#" class="nav-link font-bold border-b border-black dark:border-white">Chinese</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center mt-6">
+                <!-- Theme Toggle (Moon/Sun) -->
+                <button id="theme-toggle" class="text-xl cursor-pointer hover:scale-110 transition-transform">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+            
+            <hr class="hr-sep">
+        </header>
+
+        <!-- Main Content (Blog Posts by Year) -->
+        <main class="mt-10">
+            <section class="mb-12">
+                <h2 class="text-4xl font-bold mb-8">2014</h2>
+
+                <!-- Post Item 1 -->
+                <div class="post-item">
+                    <span class="text-gray-500 font-bold">Apr 02</span>
+                    <a href="#" class="text-lg font-bold hover:underline">Getting Started with Hugo</a>
+                    <div class="cat-tag">Golang</div>
+                </div>
+
+                <!-- Post Item 2 -->
+                <div class="post-item">
+                    <span class="text-gray-500 font-bold">Apr 02</span>
+                    <a href="#" class="text-lg font-bold hover:underline">(Hu)go Template Primer</a>
+                    <div class="cat-tag">Develop</div>
+                </div>
+
+                <!-- Post Item 3 -->
+                <div class="post-item">
+                    <span class="text-gray-500 font-bold">Mar 10</span>
+                    <a href="#" class="text-lg font-bold hover:underline">Migrate to Hugo from Jekyll</a>
+                    <div class="cat-tag">Docs</div>
+                </div>
+            </section>
+
+            <!-- Section Year 2013 (Placeholder) -->
+            <section class="mb-12">
+                <h2 class="text-4xl font-bold mb-8 opacity-40">2013</h2>
+                <div class="post-item opacity-40">
+                    <span class="text-gray-500 font-bold">Dec 20</span>
+                    <a href="#" class="text-lg font-bold hover:underline">Welcome to the YinYang theme</a>
+                    <div class="cat-tag">Intro</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-32 pt-8 border-t border-gray-100 dark:border-zinc-800 text-center">
+            <p class="text-xs uppercase tracking-widest font-bold opacity-30">Powered by 123Tool</p>
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.innerText = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                themeIcon.innerText = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            themeIcon.innerText = '☀️';
+        }
+
+        console.log("YinYang Theme Clone Loaded.");
+    </script>
+</body>
+</html>
+
+```
