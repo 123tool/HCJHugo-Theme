@@ -1,0 +1,163 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo Nightfall | Minimalist Terminal Theme</title>
+    <!-- Google Fonts: Menggunakan JetBrains Mono untuk kesan Terminal yang kuat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #222222; /* Warna latar belakang gelap khas Nightfall */
+            --text-color: #ffffff;
+            --muted-color: #a9a9a9;
+            --hover-color: #cccccc;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigasi Header */
+        header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .terminal-prompt {
+            color: var(--text-color);
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--muted-color);
+            text-decoration: underline;
+        }
+
+        /* Konten Utama */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .site-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--muted-color);
+            border-bottom: 1px solid var(--muted-color);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--muted-color);
+        }
+
+        /* Responsivitas untuk Mobile */
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            .nav-links {
+                display: flex;
+                gap: 1rem;
+            }
+            .nav-links a {
+                margin-left: 0;
+            }
+            .site-title {
+                font-size: 2rem;
+            }
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bagian Header -->
+    <header>
+        <div class="terminal-prompt">
+            hello@gohugo.io - $
+        </div>
+        <nav class="nav-links">
+            <a href="#">~/about</a>
+            <a href="#">~/posts</a>
+        </nav>
+    </header>
+
+    <!-- Bagian Tengah (Hero Section) -->
+    <main>
+        <h1 class="site-title">Hugo Nightfall</h1>
+        
+        <div class="social-links">
+            <a href="#">github</a>
+            <a href="#">twitter</a>
+            <a href="#">linkedin</a>
+            <a href="#">email</a>
+        </div>
+    </main>
+
+    <!-- Bagian Footer -->
+    <footer>
+        <p>© 2023 Hugo Nightfall. Built with Hugo and Nightfall theme</p>
+        <p style="margin-top: 5px; font-size: 0.65rem; opacity: 0.5;">Powered by 123Tool</p>
+    </footer>
+
+    <script>
+        // Efek ketik sederhana untuk judul (opsional untuk menambah kesan terminal)
+        console.log("Nightfall Theme Loaded Successfully.");
+    </script>
+</body>
+</html>
+
+```
