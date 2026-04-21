@@ -1,0 +1,262 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry for Hugo - Clone</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurasi Warna Spesifik Tema Henry */
+        :root {
+            --bg-color: #1a1e22;       /* Slate gelap pekat */
+            --text-main: #d1d5db;      /* Abu-abu terang */
+            --text-heading: #ffffff;   /* Putih murni untuk judul */
+            --accent-gold: #eab308;    /* Kuning emas untuk tag & subjudul */
+            --border-color: #2d3439;   /* Garis pemisah halus */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout Dua Kolom (Split Screen) */
+        .split-layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        @media (min-width: 1024px) {
+            .split-layout {
+                flex-direction: row;
+            }
+        }
+
+        /* Kolom Kiri: Daftar Arsip */
+        .sidebar-list {
+            flex: 1;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 1024px) {
+            .sidebar-list {
+                border-bottom: none;
+                border-right: 1px solid var(--border-color);
+                overflow-y: auto;
+                height: 100vh;
+                padding: 4rem 3rem;
+            }
+        }
+
+        /* Kolom Kanan: Konten Utama */
+        .main-content {
+            flex: 1.2;
+            padding: 3rem 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .main-content {
+                overflow-y: auto;
+                height: 100vh;
+                padding: 4rem 5rem;
+            }
+        }
+
+        /* Label Tag (POST, DRAFT, dll) */
+        .tag-label {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-draft {
+            color: #fbbf24;
+            border-color: #fbbf24;
+        }
+
+        /* Styling Post Item di Sidebar */
+        .post-entry {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-entry h3 {
+            color: var(--text-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .post-entry p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+
+        /* Heading Kuning di Konten Utama */
+        .gold-heading {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Box Kutipan / Intro */
+        .intro-box {
+            border: 1px solid var(--accent-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            background-color: rgba(234, 179, 8, 0.03);
+        }
+
+        /* Ikon Gentleman (SVG) */
+        .gentleman-icon {
+            width: 180px;
+            height: 180px;
+            margin: 2rem auto;
+            background-color: #ffffff;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="split-layout">
+        
+        <!-- KOLOM KIRI: DAFTAR ARSIP -->
+        <aside class="sidebar-list">
+            <div class="text-[0.8rem] font-bold text-gray-500 mb-8 tracking-widest uppercase">2024</div>
+            
+            <!-- Post 1 -->
+            <div class="post-entry">
+                <div class="flex gap-2">
+                    <span class="tag-label">Post</span>
+                    <span class="tag-label tag-draft">Draft</span>
+                </div>
+                <h3>git remote fundamentals and misc. tips</h3>
+                <p>Clear your understanding around the fundamentals of the git remote, how it relates to local branches and miscellaneous tips once that's clear.</p>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="post-entry">
+                <span class="tag-label">Post</span>
+                <h3>Pick the right JDK for Android Studio</h3>
+                <p>Blog post pointing out the right way to setup your JDK for Android Studio.</p>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="post-entry">
+                <span class="tag-label">Letter</span>
+                <h3>letter.kau.sh — 2024 Mar</h3>
+                <p>Letter 3</p>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="post-entry">
+                <div class="flex gap-2">
+                    <span class="tag-label">Link</span>
+                    <span class="tag-label tag-draft">Draft</span>
+                </div>
+                <h3>You're not Forgetful: Memorize everything</h3>
+                <p>YouTuber doctor explains how to improve your memory.</p>
+            </div>
+
+            <!-- Post 5 -->
+            <div class="post-entry">
+                <span class="tag-label">Post</span>
+                <h3>Option ⌥ key for shortcuts vs special characters</h3>
+                <p>Blog post explaining a reliable way to use the Option key on macOS for keyboard shortcuts instead of special characters.</p>
+            </div>
+
+            <!-- Post 6 -->
+            <div class="post-entry">
+                <span class="tag-label">Letter</span>
+                <h3>letter.kau.sh — 2024 Feb</h3>
+                <p>My second letter.</p>
+            </div>
+            
+            <div class="mt-12 text-sm text-gray-600">
+                Powered by 123Tool
+            </div>
+        </aside>
+
+        <!-- KOLOM KANAN: KONTEN UTAMA -->
+        <main class="main-content">
+            <h1 class="text-3xl font-bold text-white mb-2 leading-tight">Introducing Henry for Hugo</h1>
+            <div class="text-sm text-gray-500 mb-8 uppercase tracking-wide">August 2024</div>
+
+            <!-- Ikon Pria Bertopi (Gentleman) -->
+            <div class="gentleman-icon">
+                <svg viewBox="0 0 100 100" class="w-full h-full text-black">
+                    <!-- Top Hat -->
+                    <rect x="30" y="5" width="40" height="30" fill="currentColor"/>
+                    <rect x="20" y="35" width="60" height="5" fill="currentColor"/>
+                    <!-- Face Outline Simplified -->
+                    <path d="M35 40 Q35 80 50 85 Q65 80 65 40" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <!-- Monocle -->
+                    <circle cx="60" cy="55" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M60 48 V40" stroke="currentColor" stroke-width="1"/>
+                    <!-- Mustache -->
+                    <path d="M40 70 Q50 65 60 70" stroke="currentColor" stroke-width="3" fill="none"/>
+                    <!-- Suit / Tie -->
+                    <path d="M25 100 L50 85 L75 100" fill="currentColor"/>
+                    <rect x="47" y="85" width="6" height="15" fill="white"/>
+                    <path d="M42 90 L50 95 L58 90" fill="currentColor"/>
+                </svg>
+            </div>
+
+            <!-- Intro Box -->
+            <div class="intro-box">
+                Henry is a theme I first open-sourced for <a href="#" class="underline">Jekyll</a>. You can read all about it <a href="#" class="underline">here</a>. I've now recreated <a href="#" class="underline">Henry for Hugo</a>.
+            </div>
+
+            <h2 class="gold-heading">Why Hugo?</h2>
+            <p class="mb-6">Over the last year, I've been learning <a href="#" class="underline">Go</a> and my interest in <a href="#" class="underline">Hugo</a> piqued. Hugo—much like Jekyll—is a static blog engine written in Go. But it's got more features, a more active community, and is blazingly fast.</p>
+
+            <h2 class="gold-heading">Features</h2>
+            <p class="mb-6">Many of the features I wrote as custom features for Jekyll, come built-in with Hugo. But I took the opportunity to tweak these a little further.</p>
+            <p class="mb-6 italic">Here's how they're implemented in Hugo:</p>
+
+            <h2 class="gold-heading">Customizability</h2>
+            <p class="mb-6">A blog theme is only useful if it is versatile enough to reflect your unique character and touch. Henry is extremely customizable. With simple sass override files you can customize the entire look of your blog.</p>
+            
+            <p class="mb-6">Have a look at the main style area files in Henry. Here's how we import the different styles...</p>
+
+            <!-- Footer Small -->
+            <div class="mt-20 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                © 2024 &middot; Powered by 123Tool
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>
+
+```
