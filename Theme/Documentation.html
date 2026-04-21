@@ -1,0 +1,307 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Hugo Theme Clone</title>
+    <!-- Google Fonts: Inter untuk tipografi modern dan bersih -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-main: #0b0e14;
+            --bg-sidebar: #0f1219;
+            --accent-blue: #3b82f6;
+            --accent-blue-soft: rgba(59, 130, 246, 0.15);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-color: #1f2937;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: rgba(11, 14, 20, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar-left {
+            height: calc(100vh - 64px);
+            position: sticky;
+            top: 64px;
+            overflow-y: auto;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .nav-active {
+            background-color: var(--accent-blue-soft);
+            color: var(--accent-blue);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* Stepper UI */
+        .step-container {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 40px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            background: var(--bg-main);
+            z-index: 2;
+        }
+
+        .step-line {
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            bottom: -40px;
+            width: 1px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        .step-container:last-child .step-line {
+            display: none;
+        }
+
+        /* Right Sidebar (On this page) */
+        .toc-link {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        .toc-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+
+        /* Cards/Links at bottom */
+        .next-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: border-color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .next-card:hover {
+            border-color: var(--accent-blue);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .powered-by {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigasi Utama -->
+    <header class="h-16 flex items-center px-6">
+        <div class="flex items-center gap-2 font-extrabold text-xl tracking-tighter">
+            YOUR LOGO
+        </div>
+        <nav class="hidden md:flex ml-12 gap-8 text-sm font-medium text-gray-400">
+            <a href="#" class="hover:text-white transition">Home</a>
+            <a href="#" class="text-white">Documentation</a>
+            <a href="#" class="hover:text-white transition">Blog</a>
+            <a href="#" class="hover:text-white transition">Showcase</a>
+            <a href="#" class="hover:text-white transition">Community</a>
+        </nav>
+        <div class="ml-auto flex items-center gap-4">
+            <button class="p-2 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <button class="p-2 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M18.36 5.64l1.42-1.42"/></svg>
+            </button>
+            <a href="#" class="border border-gray-600 px-4 py-1.5 rounded text-sm font-semibold hover:bg-white hover:text-black transition">Get Started</a>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Kiri -->
+        <aside class="sidebar-left w-64 hidden lg:block p-6">
+            <div class="mb-8">
+                <a href="#" class="block py-1.5 px-3 nav-active mb-4">Getting Started</a>
+                <div class="text-xs font-bold uppercase text-gray-500 mb-2 px-3">Guide</div>
+                <ul class="space-y-1">
+                    <li><a href="#" class="block py-1.5 px-3 text-sm text-gray-400 hover:text-white transition">Project Structure</a></li>
+                    <li><a href="#" class="block py-1.5 px-3 text-sm text-gray-400 hover:text-white transition">Configuration</a></li>
+                    <li class="group">
+                        <button class="flex items-center justify-between w-full py-1.5 px-3 text-sm text-gray-400 hover:text-white">
+                            Shortcodes
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotate-90"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                        <ul class="ml-4 mt-1 border-l border-gray-800 pl-4 space-y-1">
+                            <li><a href="#" class="block py-1 text-xs text-gray-500 hover:text-white">Callout</a></li>
+                            <li><a href="#" class="block py-1 text-xs text-gray-500 hover:text-white">Cards</a></li>
+                            <li><a href="#" class="block py-1 text-xs text-gray-500 hover:text-white">Spoiler</a></li>
+                            <li><a href="#" class="block py-1 text-xs text-gray-500 hover:text-white">Steps</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-12">
+                <div class="text-xs font-bold uppercase text-gray-500 mb-4 px-3">Still need help?</div>
+                <ul class="space-y-2">
+                    <li><a href="#" class="block px-3 text-xs text-gray-400 hover:text-white">Community</a></li>
+                    <li><a href="#" class="block px-3 text-xs text-gray-400 hover:text-white flex items-center gap-1">Hugo Docs <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Konten Utama -->
+        <main class="flex-1 p-8 lg:p-12 max-w-4xl">
+            <!-- Breadcrumbs -->
+            <nav class="flex text-xs text-gray-500 gap-2 mb-4">
+                <span>Documentation</span>
+                <span>/</span>
+                <span class="text-gray-300">Getting Started</span>
+            </nav>
+
+            <h1 class="text-5xl font-extrabold mb-10">Getting Started</h1>
+
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold mb-8">Quick Start from Template</h2>
+                
+                <!-- Stepper -->
+                <div class="step-container">
+                    <div class="step-number">1</div>
+                    <div class="step-line"></div>
+                    <h3 class="font-bold text-xl mb-2">Initialize a new site</h3>
+                    <p class="text-gray-400 text-sm">
+                        <a href="#" class="text-blue-400 underline underline-offset-4 decoration-blue-800">Click to copy the template on GitHub</a>
+                    </p>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-number">2</div>
+                    <div class="step-line"></div>
+                    <h3 class="font-bold text-xl mb-2">Configure your new site</h3>
+                    <p class="text-gray-400 text-sm">Configure your site name, description, and menu.</p>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-number">3</div>
+                    <div class="step-line"></div>
+                    <h3 class="font-bold text-xl mb-2">Add your content</h3>
+                    <p class="text-gray-400 text-sm">Edit the homepage and add your documentation pages.</p>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-number">4</div>
+                    <div class="step-line"></div>
+                    <h3 class="font-bold text-xl mb-2">Publish your site</h3>
+                    <p class="text-gray-400 text-sm">Easily publish your site for free with GitHub Pages</p>
+                </div>
+            </section>
+
+            <!-- Bagian Next -->
+            <section class="mt-20">
+                <h2 class="text-2xl font-bold mb-6">Next</h2>
+                <p class="text-gray-400 mb-8">Let's customize your new site:</p>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="next-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        <span class="font-semibold text-sm">Project Structure</span>
+                    </div>
+                    <div class="next-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-500"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span class="font-semibold text-sm">Configuration</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar Kanan (On this page) -->
+        <aside class="hidden xl:block w-64 p-6 sidebar-right sticky top-16 h-fit">
+            <div class="text-xs font-bold uppercase text-gray-400 mb-4">On this page</div>
+            <ul class="space-y-3">
+                <li><a href="#" class="toc-link block border-l-2 border-blue-500 pl-4 text-white">Quick Start from Template</a></li>
+                <li><a href="#" class="toc-link block pl-4">Initialize a new site</a></li>
+                <li><a href="#" class="toc-link block pl-4">Configure your new site</a></li>
+                <li><a href="#" class="toc-link block pl-4">Add your content</a></li>
+                <li><a href="#" class="toc-link block pl-4">Publish your site</a></li>
+                <li><a href="#" class="toc-link block pl-4">Next</a></li>
+            </ul>
+            
+            <div class="mt-10 pt-10 border-t border-gray-800">
+                <a href="#" class="text-xs text-gray-500 hover:text-white flex items-center gap-2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    Edit this page
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <div class="powered-by">Powered by 123Tool</div>
+
+    <script>
+        // Logika sederhana untuk scroll spying atau menu toggle bisa ditambahkan di sini
+        console.log("Hugo Documentation Theme Loaded.");
+        
+        // Memastikan sidebar navigasi merespons menu yang aktif
+        document.querySelectorAll('.sidebar-left a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('.sidebar-left a').forEach(l => l.classList.remove('nav-active'));
+                if (!link.classList.contains('group')) {
+                    link.classList.add('nav-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+```
