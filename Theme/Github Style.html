@@ -1,0 +1,261 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo bep | GitHub Style Theme</title>
+    <!-- Font Inter untuk tampilan modern mirip GitHub -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1f2328;
+        }
+
+        /* Header GitHub */
+        header {
+            background-color: #24292f;
+            color: #ffffff;
+        }
+
+        .search-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #57606a;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 14px;
+            width: 300px;
+        }
+
+        /* Sidebar Profil */
+        .avatar-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .avatar-img {
+            width: 296px;
+            height: 296px;
+            border-radius: 50%;
+            border: 1px solid #d0d7de;
+            background-color: #ffffff;
+        }
+
+        /* Tab Menu */
+        .tab-item {
+            @apply flex items-center gap-2 px-4 py-2 border-b-2 border-transparent hover:border-gray-300 transition-all text-sm font-medium;
+            color: #1f2328;
+        }
+
+        .tab-item.active {
+            @apply border-orange-500 font-semibold;
+        }
+
+        .badge {
+            @apply bg-gray-200 text-xs px-2 py-0.5 rounded-full;
+            color: #1f2328;
+        }
+
+        /* Kartu Postingan */
+        .post-card {
+            @apply p-4 border border-gray-300 rounded-md hover:shadow-sm transition-shadow;
+        }
+
+        .tag-icon {
+            @apply inline-block w-3 h-3 rounded-full mr-1;
+        }
+
+        /* Grafik Kontribusi (Heatmap) */
+        .contribution-graph {
+            display: grid;
+            grid-template-columns: repeat(52, 1fr);
+            gap: 3px;
+        }
+
+        .graph-cell {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            background-color: #ebedf0;
+        }
+
+        .graph-cell.level-1 { background-color: #9be9a8; }
+        .graph-cell.level-2 { background-color: #40c463; }
+        .graph-cell.level-3 { background-color: #30a14e; }
+        .graph-cell.level-4 { background-color: #216e39; }
+
+        .powered-by {
+            @apply fixed bottom-4 right-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Atas -->
+    <header class="h-16 flex items-center px-4 md:px-8">
+        <div class="flex items-center gap-4">
+            <svg height="32" viewBox="0 0 16 16" version="1.1" width="32" fill="white"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+            <input type="text" class="search-box hidden md:block" placeholder="Cari atau ketikkan perintah...">
+        </div>
+        <div class="ml-auto">
+            <button class="p-2 hover:bg-gray-700 rounded-full">🌙</button>
+        </div>
+    </header>
+
+    <div class="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col md:flex-row mt-8 gap-8">
+        
+        <!-- Sisi Kiri: Profil -->
+        <aside class="md:w-[296px] shrink-0">
+            <div class="avatar-container -mt-12 md:-mt-16">
+                <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=300&h=300&fit=crop" alt="Profil Hugo" class="avatar-img shadow-sm">
+            </div>
+            
+            <div class="mt-4">
+                <h1 class="text-2xl font-bold">Hugo</h1>
+                <p class="text-xl text-gray-500 font-light">bep</p>
+                <p class="mt-4 text-base">Make the Web Fun Again</p>
+            </div>
+
+            <div class="mt-6 space-y-2 text-sm">
+                <div class="flex items-center gap-2">
+                    <svg width="16" height="16" fill="#57606a" viewBox="0 0 16 16"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 3.75v.781c0 .03.014.059.04.079l5.473 4.105a1.25 1.25 0 0 0 1.487 0l5.473-4.105a.05.05 0 0 0 .04-.079v-.781a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm13 2.182-4.973 3.73a2.75 2.75 0 0 1-3.272 0L1.332 5.819a.25.25 0 0 0-.332.378l.001.001 5.51 4.133a1.25 1.25 0 0 0 1.487 0l5.511-4.133a.25.25 0 0 0-.333-.378Z"></path></svg>
+                    <span>you@mail.com</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg width="16" height="16" fill="#57606a" viewBox="0 0 16 16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 2 2 0 0 0 2.83 0l2.5-2.5a2 2 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25a.751.751 0 0 0 .018 1.042.751.751 0 0 0 1.042.018 2 2 0 0 1 2.83 0l-2.5 2.5a2 2 0 0 1-2.83 0l-1.25-1.25a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042Z"></path></svg>
+                    <a href="#" class="text-blue-600 hover:underline">https://meik2333.com/</a>
+                </div>
+            </div>
+
+            <div class="mt-8 border-t border-gray-200 pt-4">
+                <h2 class="text-base font-bold mb-3">Organizations</h2>
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 bg-gray-100 rounded border border-gray-300 flex items-center justify-center">🐙</div>
+                    <div class="w-8 h-8 bg-gray-100 rounded border border-gray-300 flex items-center justify-center">🐦</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sisi Kanan: Konten Utama -->
+        <main class="flex-1">
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-200 sticky top-16 bg-white z-40">
+                <a href="#" class="tab-item active">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M1.75 1.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5ZM0 2.75C0 1.784.784 1 1.75 1s1.75.784 1.75 1.75a1.75 1.75 0 0 1-1.75 1.75 1.75 1.75 0 0 1-1.75-1.75ZM1.75 6a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5ZM0 7.25C0 6.284.784 5.5 1.75 5.5s1.75.784 1.75 1.75a1.75 1.75 0 0 1-1.75 1.75 1.75 1.75 0 0 1-1.75-1.75ZM1.75 10.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5ZM0 11.75C0 10.784.784 10 1.75 10s1.75.784 1.75 1.75a1.75 1.75 0 0 1-1.75 1.75 1.75 1.75 0 0 1-1.75-1.75Z"></path><path d="M5.25 1.75A.75.75 0 0 1 6 1h8.25a.75.75 0 0 1 0 1.5H6a.75.75 0 0 1-.75-.75Zm.75 4.75a.75.75 0 0 0 0 1.5h8.25a.75.75 0 0 0 0-1.5H6Zm0 4.75a.75.75 0 0 0 0 1.5h8.25a.75.75 0 0 0 0-1.5H6Z"></path></svg>
+                    Ringkasan
+                </a>
+                <a href="#" class="tab-item">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+                    Postingan <span class="badge">5</span>
+                </a>
+            </div>
+
+            <!-- Konten Populer -->
+            <div class="mt-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-base font-bold">Postingan Populer</h2>
+                    <a href="#" class="text-xs text-blue-600 hover:underline">Lihat semua</a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Post 1 -->
+                    <div class="post-card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg width="16" height="16" fill="#57606a" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+                            <a href="#" class="text-blue-600 font-semibold hover:underline">Markdown Syntax Guide</a>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">Contoh sintaks Markdown dasar yang dapat digunakan dalam file konten Hugo...</p>
+                        <div class="flex gap-4 text-xs">
+                            <div class="flex items-center"><span class="tag-icon bg-blue-500"></span> markdown</div>
+                            <div class="flex items-center"><span class="tag-icon bg-orange-400"></span> css</div>
+                            <div class="flex items-center"><span class="tag-icon bg-blue-400"></span> html</div>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post-card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <svg width="16" height="16" fill="#57606a" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+                            <a href="#" class="text-blue-600 font-semibold hover:underline">Rich Content</a>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">Hugo hadir dengan beberapa Shortcode bawaan untuk konten yang kaya...</p>
+                        <div class="flex gap-4 text-xs">
+                            <div class="flex items-center"><span class="tag-icon bg-purple-500"></span> shortcodes</div>
+                            <div class="flex items-center"><span class="tag-icon bg-gray-400"></span> privacy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grafik Kontribusi -->
+            <div class="mt-8">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-base font-normal">5 postingan di 2019</h2>
+                </div>
+                <div class="border border-gray-300 rounded-md p-4 overflow-x-auto">
+                    <div class="flex justify-between text-[10px] text-gray-400 mb-2 min-w-[700px]">
+                        <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>Mei</span><span>Jun</span><span>Jul</span><span>Agu</span><span>Sep</span><span>Okt</span><span>Nov</span><span>Des</span>
+                    </div>
+                    <div class="contribution-graph min-w-[700px]" id="heatmap">
+                        <!-- Kotak heatmap akan dihasilkan oleh JS -->
+                    </div>
+                    <div class="flex items-center justify-end gap-1 mt-2 text-[10px] text-gray-400">
+                        <span>Less</span>
+                        <div class="graph-cell"></div>
+                        <div class="graph-cell level-1"></div>
+                        <div class="graph-cell level-2"></div>
+                        <div class="graph-cell level-3"></div>
+                        <div class="graph-cell level-4"></div>
+                        <span>More</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aktivitas Postingan -->
+            <div class="mt-8 mb-20">
+                <h2 class="text-base font-bold mb-4">Aktivitas Postingan</h2>
+                <div class="border-l-2 border-gray-200 ml-2 pl-6 space-y-8">
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1 w-2.5 h-2.5 bg-gray-200 rounded-full border-2 border-white"></div>
+                        <h3 class="text-xs font-bold text-gray-500 mb-4">Maret 2019</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-sm">
+                                <svg width="16" height="16" fill="#57606a" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+                                <a href="#" class="text-blue-600 font-semibold hover:underline">Membuat 5 postingan</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="powered-by">Powered by 123Tool</div>
+
+    <script>
+        // Menghasilkan kotak heatmap secara acak untuk simulasi
+        const heatmap = document.getElementById('heatmap');
+        for (let i = 0; i < 364; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'graph-cell';
+            
+            // Randomly assign activity levels for Mar (around week 10-14)
+            if (i > 70 && i < 100 && Math.random() > 0.7) {
+                const level = Math.floor(Math.random() * 4) + 1;
+                cell.classList.add('level-' + level);
+            }
+            
+            heatmap.appendChild(cell);
+        }
+
+        console.log("Klon GitHub Hugo dimuat.");
+    </script>
+</body>
+</html>
+
+```
