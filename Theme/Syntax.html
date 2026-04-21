@@ -1,0 +1,176 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepadium | 100% JavaScript-free (Inspired)</title>
+    <!-- Google Fonts: Inter untuk tampilan modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#2b2d3e',
+                        darkCard: '#33364d',
+                        lightBg: '#ffffff',
+                        brandBlue: '#3498db',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .post-card {
+            @apply border-b border-gray-100 dark:border-gray-700/50 py-8 first:pt-0 last:border-0;
+        }
+        .tag-pill {
+            @apply text-[10px] uppercase font-bold px-2 py-0.5 rounded transition-colors;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 dark:bg-darkBg dark:text-gray-300 font-sans min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-6 py-8">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row items-center justify-between mb-12 border-b border-gray-100 dark:border-gray-700/30 pb-6 relative">
+            <div class="mb-4 md:mb-0">
+                <h1 class="text-xl font-bold dark:text-white cursor-pointer hover:opacity-80">Notepadium</h1>
+            </div>
+            
+            <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:block">
+                <span class="text-[10px] text-gray-400 font-medium tracking-wide">100% JavaScript-free</span>
+            </div>
+
+            <nav class="flex items-center gap-4 text-sm font-medium">
+                <a href="#" class="text-brandBlue hover:underline">Categories</a>
+                <a href="#" class="text-brandBlue hover:underline">Tags</a>
+                <a href="#" class="text-brandBlue hover:underline">About</a>
+                <a href="#" class="text-brandBlue hover:underline">Hugo</a>
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="ml-2 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <svg id="moonIcon" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="sunIcon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content (Article List) -->
+        <main>
+            <!-- Post 1 -->
+            <article class="post-card">
+                <h2 class="text-xl font-bold mb-1 dark:text-white hover:text-brandBlue transition-colors cursor-pointer">Markdown Syntax Guide</h2>
+                <p class="text-[11px] text-gray-400 font-semibold mb-3">Mar 11, 2019</p>
+                <p class="text-sm leading-relaxed mb-4 text-gray-600 dark:text-gray-400">
+                    This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme...
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag-pill bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-800">themes</span>
+                    <span class="tag-pill bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-800">syntax</span>
+                    <span class="text-[11px] text-gray-400 font-medium">#markdown</span>
+                    <span class="text-[11px] text-gray-400 font-medium">#css</span>
+                    <span class="text-[11px] text-gray-400 font-medium">#html</span>
+                    <span class="text-[11px] text-gray-400 font-medium">#themes</span>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="post-card">
+                <h2 class="text-xl font-bold mb-1 dark:text-white hover:text-brandBlue transition-colors cursor-pointer">Rich Content</h2>
+                <p class="text-[11px] text-gray-400 font-semibold mb-3">Mar 10, 2019</p>
+                <p class="text-sm leading-relaxed mb-4 text-gray-600 dark:text-gray-400">
+                    Hugo ships with several Built-in Shortcodes for rich content, along with a Privacy Config and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds...
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[11px] text-gray-400 font-medium">#shortcodes</span>
+                    <span class="text-[11px] text-gray-400 font-medium">#privacy</span>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="post-card">
+                <h2 class="text-xl font-bold mb-1 dark:text-white hover:text-brandBlue transition-colors cursor-pointer">Placeholder Text</h2>
+                <p class="text-[11px] text-gray-400 font-semibold mb-3">Mar 09, 2019</p>
+                <p class="text-sm leading-relaxed mb-4 text-gray-600 dark:text-gray-400">
+                    Lorem est tota propiore conpellar pectoribus de pectora summo...
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[11px] text-gray-400 font-medium">#markdown</span>
+                    <span class="text-[11px] text-gray-400 font-medium">#text</span>
+                </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="post-card">
+                <h2 class="text-xl font-bold mb-1 dark:text-white hover:text-brandBlue transition-colors cursor-pointer">Math Typesetting</h2>
+                <p class="text-[11px] text-gray-400 font-semibold mb-3">Mar 08, 2019</p>
+                <p class="text-sm leading-relaxed mb-2 text-gray-600 dark:text-gray-400">
+                    Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.
+                </p>
+                <p class="text-gray-400 text-xs italic">...</p>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="post-card">
+                <h2 class="text-xl font-bold mb-1 dark:text-white hover:text-brandBlue transition-colors cursor-pointer">Emoji Support</h2>
+                <p class="text-[11px] text-gray-400 font-semibold mb-3">Mar 05, 2019</p>
+                <p class="text-sm leading-relaxed mb-2 text-gray-600 dark:text-gray-400">
+                    Emoji can be enabled in a Hugo project in a number of ways...
+                </p>
+                <p class="text-gray-400 text-xs italic">...</p>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-700/30 text-center">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">
+                Powered by 123Tool
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Initialize theme from storage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+
+        console.log("Notepadium Clone Initialized Successfully.");
+    </script>
+</body>
+</html>
+
+```
